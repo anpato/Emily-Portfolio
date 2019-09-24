@@ -10,6 +10,7 @@ dotenv.config()
 
 // routers
 const AuthRouter = require('./routes/AuthRouter')
+const ProjectRouter = require('./routes/ProjectRouter')
 
 // routers
 
@@ -25,6 +26,7 @@ app.use(bodyParser.json())
 
 // App Routes
 app.use('/auth', AuthRouter)
+app.use('/projects', ProjectRouter)
 app.use(passport.initialize())
 
 // mongoose connection to mongo cloud db
