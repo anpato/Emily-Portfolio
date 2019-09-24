@@ -41,7 +41,7 @@ class Contact extends Component {
               <h3>Contact</h3>
             </div>
             <div>
-            <p>Contact Message</p>
+              <p>Contact Message</p>
             </div>
           </aside>
           </div>

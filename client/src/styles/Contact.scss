@@ -4,10 +4,12 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border: 2px solid blue;
 	height: 100vh;
+	background: #f8f8f8;
 	.form-container {
-		border: 2px solid green;
+		box-shadow: 2px 4px 10px $shadow;
+		background: #fff;
+		border-radius: 3px;
 		display: flex;
 		flex-direction: row;
 		width: 80%;
@@ -97,7 +99,8 @@
 			}
 		}
 		aside {
-			background: $slate;
+			background: $secondary;
+			box-shadow: 2px 4px 10px $shadow;
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
@@ -108,7 +111,6 @@
 			div:first-of-type {
 				flex: 1;
 				width: 80%;
-				border: 2px solid blue;
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -119,13 +121,10 @@
 				height: 100%;
 			}
 			h3 {
-				// margin: auto;
+				font-size: 24px;
 			}
 			p {
-				// margin: auto;
 				font-size: 18px;
-
-				border: 2px solid red;
 			}
 		}
 	}
