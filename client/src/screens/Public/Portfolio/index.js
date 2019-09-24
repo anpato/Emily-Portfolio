@@ -80,7 +80,7 @@ const data = [
 	}
 ]
 
-const { scaleDown, flip } = transitions
+const { scaleDown } = transitions
 
 class Portfolio extends Component {
 	constructor(props) {

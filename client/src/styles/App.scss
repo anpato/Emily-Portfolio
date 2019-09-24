@@ -1,6 +1,7 @@
 @import 'Sidebar';
 @import 'Home';
 @import 'Portfolio';
+@import 'Contact';
 .main {
 	display: flex;
 	height: 100vh;
@@ -15,6 +16,7 @@
 button,
 button:focus,
 button:active {
+	cursor: pointer;
 	outline: none;
 	border: none;
 }
