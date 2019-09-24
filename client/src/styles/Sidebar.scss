@@ -1,0 +1,56 @@
+@import 'Colors';
+.sidebar {
+	flex: 0.8;
+	background-color: $slate;
+	overflow: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100px;
+	box-shadow: 4px 0 10px $shadow;
+	border-right: 3px solid $border;
+
+	.links {
+		display: flex;
+		width: 100%;
+		flex: 1;
+		flex-direction: column;
+		a {
+			text-align: center;
+			text-decoration: none;
+			width: 100%;
+			border: none;
+			padding: 0.8em 0;
+			cursor: pointer;
+			font-size: 20px;
+			font-weight: 700;
+			transition: all 0.4s;
+			color: $secondary;
+		}
+		.active:hover {
+			background-color: $secondary;
+			color: $slate;
+		}
+
+		.inactive {
+			background-color: $slate;
+		}
+
+		.inactive:hover {
+			background-color: $hover;
+		}
+
+		.active {
+			color: $slate;
+			background-color: $secondary;
+		}
+	}
+
+	.logo-container {
+		height: 200px;
+		img {
+			align-self: center;
+			height: 200px;
+		}
+	}
+}
