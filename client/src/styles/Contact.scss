@@ -93,6 +93,16 @@
 				border-radius: 3px;
 			}
 
+			button:disabled {
+				color: $border;
+				background: chartreuse;
+			}
+
+			button:disabled:hover {
+				color: $border;
+				background-color: chartreuse;
+			}
+
 			button:hover {
 				color: $border;
 				background-color: $secondary;

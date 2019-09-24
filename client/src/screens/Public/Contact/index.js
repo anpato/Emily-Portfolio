@@ -7,7 +7,7 @@ class Contact extends Component {
       name: '',
       email: '',
       message: '',
-      isSubmit: false,
+      isSubmit: true,
       loading:false
     }
   }
@@ -34,7 +34,7 @@ class Contact extends Component {
           <input placeholder='Name' name='name'/>
           <input placeholder='Email' name='email'/>
           <textarea placeholder='Message...' name='message'/>
-          <button type='submit'>Send</button>
+            <button type='submit' disabled={this.state.isSubmit}><div>Send</div></button>
           </form>
           <aside>
             <div>
