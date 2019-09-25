@@ -53,4 +53,23 @@
 			height: 200px;
 		}
 	}
+
+	.social {
+		display: flex;
+		flex-direction: row;
+		margin-bottom: 4em;
+		a {
+			cursor: pointer;
+			margin: 1em;
+			svg {
+				transition: all 0.3s;
+				color: $border;
+			}
+		}
+		a:hover {
+			svg {
+				color: $secondary;
+			}
+		}
+	}
 }

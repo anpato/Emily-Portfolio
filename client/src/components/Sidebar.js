@@ -1,5 +1,10 @@
 import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom'
+import {
+	FacebookSquareIcon,
+	InstagramIcon,
+	LinkedinIcon
+} from '@patternfly/react-icons'
 import { Button } from './common'
 import Logo from '../assets/logo.png'
 const Sidebar = (props) => {
@@ -39,7 +44,17 @@ const Sidebar = (props) => {
 					}
 				/>
 			</div>
-			<div className="social"></div>
+			<div className="social">
+				<a>
+					<FacebookSquareIcon size="lg" />
+				</a>
+				<a>
+					<InstagramIcon size="lg" />
+				</a>
+				<a>
+					<LinkedinIcon size="lg" />
+				</a>
+			</div>
 		</div>
 	)
 }

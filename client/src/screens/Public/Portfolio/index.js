@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import StackGrid, { transitions } from 'react-stack-grid'
+
 const data = [
 	{
 		id: 1,
@@ -88,7 +89,7 @@ class Portfolio extends Component {
 		this.state = {
 			projects: [],
 			projectDisplayed: {},
-			loading: false
+			loading: false,
 		}
 	}
 
