@@ -8,7 +8,6 @@ import {
 import { Button } from './common'
 import Logo from '../assets/logo.png'
 const Sidebar = (props) => {
-	console.log(props.open)
 const className = props.open ? 'sidebar sidebar-open' : 'sidebar'
 
 	return (

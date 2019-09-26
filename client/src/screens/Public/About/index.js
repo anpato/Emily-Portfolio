@@ -12,13 +12,8 @@ class About extends Component {
 
 					<div>
 						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-							eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-							enim ad minim veniam, quis nostrud exercitation ullamco laboris
-							nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-							reprehenderit in voluptate velit esse cillum dolore eu fugiat
-							nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-							sunt in culpa qui officia deserunt mollit anim id est laborum.
+						I'm Currently a Student at kean university studying Interior Design / Architecture. 
+I enjoy taking on difficult and complex problems and turning them into simple and functional spaces that allows everyone to share the same experience within the space. I also love the challenges that come along with design and always strive to make every design sustainable and efficient. 
 						</p>
 					</div>
 				</article>

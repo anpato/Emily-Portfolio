@@ -104,7 +104,7 @@ class Portfolio extends Component {
 			projectDisplayed: this.state.projects.splice(index, 1),
 			projects: [...this.state.projects, project]
 		})
-		this.top.scrollIntoView({
+		return this.top.scrollIntoView({
 			block: 'start',
 			behavior: 'smooth'
 		})
@@ -143,7 +143,6 @@ class Portfolio extends Component {
 	}
 
 	render() {
-		console.log( window.screenX)
 		return (
 			<div className="portfolio" ref={(top)=> this.top = top}>
 				{this.renderHero()}
