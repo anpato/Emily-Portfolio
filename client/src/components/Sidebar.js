@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { withRouter } from 'react-router-dom'
 import {
 	FacebookSquareIcon,
@@ -8,21 +8,23 @@ import {
 import { Button } from './common'
 import Logo from '../assets/logo.png'
 const Sidebar = (props) => {
-	const [active, setActive] = useState(false)
-	const [open, toggleOpen] = useState(false)
+	console.log(props.open)
+const className = props.open ? 'sidebar sidebar-open' : 'sidebar'
 
 	return (
-		<div className="sidebar">
+		<div className={className}>
 			<div className="logo-container">
 				<img src={Logo} alt="logo" />
 			</div>
 			<div className="links">
 				<Button
+					onClick={props.onClick}
 					title="Home"
 					path="/"
 					className={props.location.pathname === '/' ? 'active' : 'inactive'}
 				/>
 				<Button
+					onClick={props.onClick}
 					title="Portfolio"
 					path="/portfolio"
 					className={
@@ -30,6 +32,7 @@ const Sidebar = (props) => {
 					}
 				/>
 				<Button
+					onClick={props.onClick}
 					title="Contact"
 					path="/contact"
 					className={
@@ -37,6 +40,7 @@ const Sidebar = (props) => {
 					}
 				/>
 				<Button
+					onClick={props.onClick}
 					title="About"
 					path="/about"
 					className={

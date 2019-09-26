@@ -1,6 +1,6 @@
 @import 'Colors';
 .sidebar {
-	flex: 0.8;
+	flex: 1;
 	background-color: $slate;
 	overflow: auto;
 	display: flex;
@@ -15,6 +15,7 @@
 		width: 100%;
 		flex: 1;
 		flex-direction: column;
+
 		a {
 			text-align: center;
 			text-decoration: none;
@@ -71,5 +72,17 @@
 				color: $secondary;
 			}
 		}
+	}
+}
+
+@media (max-width: 500px) {
+	.sidebar {
+		flex: 0;
+		transition: all 0.4s;
+	}
+	.sidebar-open {
+		transition: all 0.4s;
+		flex: 1;
+		z-index: 1000;
 	}
 }
