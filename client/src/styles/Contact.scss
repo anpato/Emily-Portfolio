@@ -156,15 +156,14 @@
 	}
 }
 
-@media (max-width: 500px) {
+@media (max-width: 850px) {
 	.contact {
 		width: 100%;
 		margin: auto;
-		height: 100%;
+		height: auto;
 		.form-container {
 			width: 90%;
 			margin: auto;
-			// margin-top: 2em;
 			flex-direction: column;
 			justify-content: space-around;
 
