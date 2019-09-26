@@ -7,6 +7,7 @@ import {
 } from '@patternfly/react-icons'
 import { Button } from './common'
 import Logo from '../assets/logo.png'
+
 const Sidebar = (props) => {
 const className = props.open ? 'sidebar sidebar-open' : 'sidebar'
 

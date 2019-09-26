@@ -1,20 +1,28 @@
 import React, { useState } from 'react'
-import { Route } from 'react-router-dom'
+import { Route, withRouter } from 'react-router-dom'
 import { AnimatedSwitch } from 'react-router-transition'
 import { About, Contact, Home, Portfolio } from './screens/Public'
 import './styles/App.scss'
 import Sidebar from './components/Sidebar'
 import { Hamburger } from './components/common'
+import { Private } from './screens/App/Private'
+import AdminSidebar from './components/AdminSidebar'
 
-function App() {
+function App({ location }) {
 	const [open, toggleOpen] = useState(false)
 	const toggle = open ? 'open' : null
 	return (
 		<div className="main">
-				<Sidebar open={open} onClick={() => toggleOpen(!open)} /> 
-			<div className='button-container'>
-				<Hamburger isOpen={open} onClick={()=>toggleOpen(!open)}/>
-				</div>
+			{location.pathname === `/admin/` ? null : location.pathname.includes(
+					'admin'
+			  ) && location.pathname !== '/admin' ? (
+				<AdminSidebar open={open} onClick={() => toggleOpen(!open)} />
+			) : (
+				<Sidebar open={open} onClick={() => toggleOpen(!open)} />
+			)}
+			<div className="button-container">
+				<Hamburger isOpen={open} onClick={() => toggleOpen(!open)} />
+			</div>
 			<main className={toggle}>
 				<AnimatedSwitch
 					atEnter={{ opacity: 0 }}
@@ -30,11 +38,11 @@ function App() {
 						component={(props) => <Portfolio {...props} />}
 					/>
 					<Route path="/about" component={(props) => <About {...props} />} />
+					<Route path="/admin" component={(props) => <Private {...props} />} />
 				</AnimatedSwitch>
-				</main>
-			
-			</div>
+			</main>
+		</div>
 	)
 }
 
-export default App
+export default withRouter(App)

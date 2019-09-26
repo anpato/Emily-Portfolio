@@ -1,8 +1,8 @@
 @import 'Sidebar';
-@import 'Home';
-@import 'Portfolio';
-@import 'Contact';
-@import 'About';
+@import './public/Home';
+@import './public/Portfolio';
+@import './public/Contact';
+@import './public/About';
 .main {
 	display: flex;
 	height: 100vh;
