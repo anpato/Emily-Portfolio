@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Route } from 'react-router-dom'
-import { Scroll } from 'react-fns'
 import { AnimatedSwitch } from 'react-router-transition'
 import { About, Contact, Home, Portfolio } from './screens/Public'
 import './styles/App.scss'
@@ -12,7 +11,7 @@ function App() {
 	const toggle = open ? 'open' : null
 	return (
 		<div className="main">
-			<Scroll render={({ x, y }) => <Sidebar yHeight={y} open={open} onClick={()=>toggleOpen(!open)}/> } />
+				<Sidebar open={open} onClick={() => toggleOpen(!open)} /> 
 			<div className='button-container'>
 				<Hamburger isOpen={open} onClick={()=>toggleOpen(!open)}/>
 				</div>
@@ -32,8 +31,9 @@ function App() {
 					/>
 					<Route path="/about" component={(props) => <About {...props} />} />
 				</AnimatedSwitch>
-			</main>
-		</div>
+				</main>
+			
+			</div>
 	)
 }
 

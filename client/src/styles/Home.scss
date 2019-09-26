@@ -32,6 +32,7 @@
 
 @media (max-width: 500px) {
 	.home {
+		height: 100vh;
 		a {
 			position: fixed;
 			z-index: 100;
