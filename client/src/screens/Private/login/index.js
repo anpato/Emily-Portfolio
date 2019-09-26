@@ -3,7 +3,7 @@ import { Spinner } from '../../../components/common'
 import { loginUser } from '../../../services/ApiServices'
 import { Redirect } from 'react-router-dom'
 
-export default class Login extends Component {
+class Login extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -89,3 +89,4 @@ export default class Login extends Component {
 		)
 	}
 }
+export { Login }

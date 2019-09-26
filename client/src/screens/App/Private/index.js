@@ -1,8 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Route } from 'react-router-dom'
-import { AnimatedSwitch } from 'react-router-transition'
-import { Dashboard } from '../../Private'
-import Login from '../../Private/login/Login'
+import { Dashboard, Login, Upload } from '../../Private'
 
 export const Private = ({ match }) => {
 	return (
@@ -13,6 +11,11 @@ export const Private = ({ match }) => {
 					exact
 					path={`${match.url}/dashboard`}
 					render={(props) => <Dashboard {...props} />}
+				/>
+				<Route
+					exact
+					path={`${match.url}/upload`}
+					render={(props) => <Upload {...props} />}
 				/>
 			</main>
 		</div>
