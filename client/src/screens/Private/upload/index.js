@@ -22,6 +22,10 @@ class Upload extends Component {
 		this.setState({ [name]: value })
 	}
 
+	handleCarousel = () => {
+		this.setState({carousel:!this.state.carousel})
+	}
+
 	handleImageUpload = (file) => {
 		this.setState({ image_urls: [...this.state.image_urls, file[0]] })
 	}
@@ -34,20 +38,11 @@ class Upload extends Component {
 					this.setState({ images: [...this.state.images, image.location] })
 				)
 			)
-
-			this.setState({ loading: true }, () =>
-				setTimeout(
-					() =>
-						this.setState({
-							loading: false,
-							isSubmit: true,
-							name: '',
-							email: '',
-							message: ''
-						}),
-					5000
-				)
-			)
+			let resp
+			if (resp.status === 200)
+			{
+				this.props.history.push('/admin/dashboard')
+			}
 		} catch (error) {
 			throw error
 		}
@@ -63,8 +58,9 @@ class Upload extends Component {
 		if (this.state.image_urls.length) {
 			return this.state.image_urls.map((image, index) => {
 				return (
-					<div key={index}>
+					<div key={index} className='input'>
 						<input
+							
 							type="file"
 							value={this.state.image_url}
 							onChange={({ target: { files } }) =>
@@ -92,7 +88,7 @@ class Upload extends Component {
 
 	render() {
 		const { title, description, carousel, image_url, isSubmit } = this.state
-		console.log(this.state.images)
+		console.log(carousel)
 		return (
 			<div className="upload">
 				<div className="form-container">
@@ -115,7 +111,9 @@ class Upload extends Component {
 							/>
 							<label htmlFor="description">Project Description</label>
 						</div>
+						<span>Upload Images</span>
 						<div className="input">
+							
 							<input
 								name="image_url"
 								onChange={({ target: { files } }) =>
@@ -124,17 +122,14 @@ class Upload extends Component {
 								type="file"
 								required
 							/>
-							<label htmlFor="description">Project Images</label>
 						</div>
 						{this.renderInputs()}
-						<div className="input">
-							<input
-								name="carousel"
-								value={carousel}
-								onChange={this.handleChange}
-								type="checkbox"
-							/>
-							<label htmlFor="description">Project Description</label>
+						<div className="select">
+							<select onChange={this.handleCarousel}>
+								<option name='carousel' value={false}>No</option>
+								<option name='carousel'value={true}>Yes</option>
+							</select>
+							<label htmlFor="carousel">Would you like to add this project to the homepage carousel?</label>
 						</div>
 						<button type="submit" disabled={isSubmit}>
 							{this.renderButtonContent()}
