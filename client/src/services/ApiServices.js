@@ -53,3 +53,29 @@ export const getCarouselImages = async () => {
 		throw error
 	}
 }
+
+export const uploadProject = async (data) => {
+	try {
+		const resp = await Api.post('/projects', data)
+		return resp.status
+	} catch (error) {
+		throw error
+	}
+}
+export const updateProject = async (id, data) => {
+	try {
+		const resp = await Api.put(`/projects/${id}`, data)
+		return resp.status
+	} catch (error) {
+		throw error
+	}
+}
+
+export const deleteProject = async (id) => {
+	try {
+		const resp = await Api.delete(`/projects/${id}`)
+		return resp.status
+	} catch (error) {
+		throw error
+	}
+}
