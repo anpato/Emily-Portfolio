@@ -13,6 +13,14 @@ ProjectRouter.get('/', async (req, res) => {
 	}
 })
 
+ProjectRouter.get('/:project_id', async (req, res) => {
+	try {
+		res.send(await Project.findById(req.params.project_id))
+	} catch (error) {
+		throw error
+	}
+})
+
 ProjectRouter.post('/', async (req, res) => {
 	try {
 		const newProject = new Project(req.body)

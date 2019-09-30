@@ -3,6 +3,7 @@
 @import './public/Portfolio';
 @import './public/Contact';
 @import './public/About';
+@import './private/Dashboard';
 .main {
 	display: flex;
 	height: 100vh;
@@ -33,6 +34,8 @@
 button,
 button:focus,
 button:active {
+	font-family: 'Advent Pro';
+	transition: all 0.4s;
 	cursor: pointer;
 	outline: none;
 	border: none;

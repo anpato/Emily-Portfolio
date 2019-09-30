@@ -1,0 +1,71 @@
+@import 'Colors';
+
+.dashboard {
+	width: 80%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+	margin: auto;
+	padding: 1em;
+
+	.card {
+		display: flex;
+		flex-direction: column;
+		width: 14em;
+		border-radius: 3px;
+		box-shadow: 2px 2px 10px $shadow;
+		transition: all 0.4;
+		h3 {
+			align-self: center;
+		}
+		div:first-of-type {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			button {
+				margin: 0.5em;
+				font-size: 14px;
+				padding: 0.6em 1.6em;
+				border-radius: 3px;
+				box-shadow: 2px 2px 10px $shadow;
+			}
+
+			button:first-of-type {
+				color: #f8f8f8;
+				background: $border;
+				&:hover {
+					background: $secondary;
+					color: $border;
+				}
+			}
+
+			button:last-of-type {
+				background: #ef5350;
+				&:hover {
+					background: #ff867c;
+				}
+			}
+		}
+		img {
+			width: 14em;
+			opacity: 0.8;
+			border-top-left-radius: 3px;
+			border-top-right-radius: 3px;
+		}
+
+		.modal {
+			background: $slate;
+			.buttons {
+				button:first-of-type {
+					color: $border;
+					background: #c8e6c9;
+					&:hover {
+						background: #e8f5e9;
+					}
+				}
+			}
+		}
+	}
+}

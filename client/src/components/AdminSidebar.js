@@ -7,13 +7,13 @@ const AdminSidebar = ({ open, location, match, onClick }) => {
 	const className = open ? 'sidebar sidebar-open' : 'sidebar'
 	return (
 		<div className={className}>
-			<div className="logo-container">
-				<img src={Logo} alt="logo" />
+			<div className='logo-container'>
+				<img src={Logo} alt='logo' />
 			</div>
-			<div className="links">
+			<div className='links'>
 				<Button
 					onClick={onClick}
-					title="Dashboard"
+					title='Dashboard'
 					path={`/admin/dashboard`}
 					className={
 						location.pathname === '/admin/dashboard' ? 'active' : 'inactive'
@@ -21,7 +21,7 @@ const AdminSidebar = ({ open, location, match, onClick }) => {
 				/>
 				<Button
 					onClick={onClick}
-					title="Upload Project"
+					title='Upload Project'
 					path={`/admin/upload`}
 					className={
 						location.pathname === '/admin/upload' ? 'active' : 'inactive'
@@ -29,17 +29,9 @@ const AdminSidebar = ({ open, location, match, onClick }) => {
 				/>
 				<Button
 					onClick={onClick}
-					title="Manage Projects"
-					path={`/admin/manage`}
-					className={
-						location.pathname === '/admin/manage' ? 'active' : 'inactive'
-					}
-				/>
-				<Button
-					onClick={onClick}
-					title="Log Out"
-					path="/"
-					className="inactive"
+					title='Log Out'
+					path='/'
+					className='inactive'
 				/>
 			</div>
 		</div>

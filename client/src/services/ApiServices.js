@@ -45,6 +45,15 @@ export const getProjects = async () => {
 	}
 }
 
+export const getProject = async (id) => {
+	try {
+		const resp = await Api.get(`/projects/${id}`)
+		return resp.data
+	} catch (error) {
+		throw error
+	}
+}
+
 export const getCarouselImages = async () => {
 	try {
 		const resp = await Api.get('/projects/?carousel')

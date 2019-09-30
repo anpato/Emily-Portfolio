@@ -70,7 +70,12 @@
 					color: $border;
 					padding: 0 0.5em;
 				}
+				img {
+					align-self: center;
 
+					margin-left: 1em;
+					width: 4em;
+				}
 				input {
 					width: 90%;
 					font-family: 'Advent Pro';
