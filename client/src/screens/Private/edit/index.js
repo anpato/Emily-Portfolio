@@ -32,7 +32,6 @@ class EditProject extends Component {
 				title: project.title,
 				description: project.description,
 				carousel: project.carousel,
-				image_urls: project.images,
 				images: project.images,
 				loading: false
 			})
@@ -53,6 +52,7 @@ class EditProject extends Component {
 			uploading: true
 		})
 		uploadFile(file[0], AwsConfig).then((image) => {
+			this.fileInput.value = ''
 			this.setState({
 				images: [...this.state.images, image.location],
 				uploading: false
@@ -87,6 +87,25 @@ class EditProject extends Component {
 		this.setState({ image_urls })
 	}
 
+	handleRemoveImages = (index) => {
+		const { images } = this.state
+		images.splice(index, 1)
+		this.setState({ images })
+	}
+
+	renderCurrentImages = () => {
+		if (this.state.images.length > 0) {
+			return this.state.images.map((image, index) => {
+				return (
+					<div key={index} className='input current-images'>
+						<button onClick={() => this.handleRemoveImages(index)}>-</button>
+						<img src={image} alt='project' />
+					</div>
+				)
+			})
+		}
+	}
+
 	renderInputs = () => {
 		if (this.state.image_urls.length > 0) {
 			return this.state.image_urls.map((image, index) => {
@@ -94,15 +113,11 @@ class EditProject extends Component {
 					<div key={index} className='input'>
 						<input
 							type='file'
-							value={this.state.image_url}
 							onChange={({ target: { files } }) =>
 								this.handleImageUpload(files)
 							}
 						/>
 						<button onClick={() => this.handleImages(index)}>-</button>
-						{this.state.images[index + 1] ? (
-							<img src={this.state.images[index + 1]} alt='project' />
-						) : null}
 					</div>
 				)
 			})
@@ -149,15 +164,16 @@ class EditProject extends Component {
 								<label htmlFor='description'>Project Description</label>
 							</div>
 							<span>Edit Images</span>
+							{this.renderCurrentImages()}
 							<div className='input'>
 								<input
+									ref={(ref) => (this.fileInput = ref)}
 									name='image_url'
 									onChange={({ target: { files } }) =>
 										this.handleImageUpload(files)
 									}
 									type='file'
 								/>
-								<img src={this.state.images[0]} alt='project' />
 							</div>
 							{this.renderInputs()}
 							{uploading ? <Spinner color='#b0bec5' /> : null}
