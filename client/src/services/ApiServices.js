@@ -38,7 +38,7 @@ export const logOutUser = async () => {
 
 export const getProjects = async () => {
 	try {
-		const resp = await Api.get('projects')
+		const resp = await Api.get('/projects')
 		return resp.data
 	} catch (error) {
 		throw error
