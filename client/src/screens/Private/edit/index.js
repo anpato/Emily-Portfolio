@@ -52,11 +52,11 @@ class EditProject extends Component {
 			uploading: true
 		})
 		uploadFile(file[0], AwsConfig).then((image) => {
-			this.fileInput.value = ''
 			this.setState({
 				images: [...this.state.images, image.location],
 				uploading: false
 			})
+			this.fileInput.value = ''
 		})
 	}
 

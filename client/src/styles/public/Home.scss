@@ -4,6 +4,10 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	height: 100%;
+	.spinner {
+		align-self: center;
+	}
 	a {
 		display: none;
 		text-align: center;
