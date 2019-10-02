@@ -1,7 +1,9 @@
 import Axios from 'axios'
 const JwtToken = 'token'
-const BASE_URL = 'http://localhost:3001'
-
+const BASE_URL =
+	window.location.hostname === 'localhost'
+		? 'http://localhost:3001'
+		: process.env.REACT_APP_PRODUCTION
 const Api = Axios.create({
 	baseURL: BASE_URL,
 	headers: {
