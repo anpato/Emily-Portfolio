@@ -46,7 +46,21 @@
 			background-color: $secondary;
 		}
 	}
-
+	.people {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		align-items: center;
+		a {
+			text-decoration: none;
+			margin-bottom: 0.4em;
+			color: $secondary;
+			cursor: text;
+		}
+		a:last-of-type {
+			cursor: pointer;
+		}
+	}
 	.logo-container {
 		height: 200px;
 		img {

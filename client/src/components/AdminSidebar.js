@@ -2,8 +2,9 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { Button } from './common'
 import Logo from '../assets/logo.png'
+import { logOutUser } from '../services/ApiServices'
 
-const AdminSidebar = ({ open, location, match, onClick }) => {
+const AdminSidebar = ({ open, location, match, history, onClick }) => {
 	const className = open ? 'sidebar sidebar-open' : 'sidebar'
 	return (
 		<div className={className}>
@@ -28,7 +29,7 @@ const AdminSidebar = ({ open, location, match, onClick }) => {
 					}
 				/>
 				<Button
-					onClick={onClick}
+					onClick={async () => await logOutUser().then(history.push('/'))}
 					title='Log Out'
 					path='/'
 					className='inactive'
