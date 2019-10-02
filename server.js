@@ -42,7 +42,7 @@ mongoose.connection.once('open', () => {
 // Test Message
 app.get('/', (req, res) => {
 	try {
-		res.send({ msg: 'Working' })
+		res.send({ msg: 'Welcome to Emily Peres` portfolio!' })
 	} catch (error) {
 		throw error
 	}
