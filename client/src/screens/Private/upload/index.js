@@ -68,8 +68,8 @@ class Upload extends Component {
 	}
 
 	renderInputs = () => {
-		if (this.state.image_urls.length) {
-			return this.state.image_urls.map((image, index) => {
+		if (this.state.images.length) {
+			return this.state.images.map((image, index) => {
 				return (
 					<div key={index} className='input'>
 						<input
