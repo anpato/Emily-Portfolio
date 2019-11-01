@@ -41,7 +41,7 @@ class Login extends Component {
 
 	renderButtonContent = () => {
 		if (this.state.loading && !this.state.isSubmit) {
-			return <Spinner color="#f8f8f8" />
+			return <Spinner color='#f8f8f8' />
 		}
 		if (!this.state.loading && !this.state.isSubmit) {
 			return <div>Login</div>
@@ -52,35 +52,32 @@ class Login extends Component {
 	}
 
 	render() {
-		const { username, password, isSubmit, token } = this.state
-		if (token) {
-			return <Redirect to="/admin/dashboard" />
-		}
+		const { username, password, isSubmit } = this.state
 
 		return (
-			<div className="login">
-				<div className="form-container">
+			<div className='login'>
+				<div className='form-container'>
 					<form onSubmit={this.handleSubmit}>
-						<div className="input">
+						<div className='input'>
 							<input
-								name="username"
+								name='username'
 								value={username}
 								onChange={this.handleChange}
 								required
 							/>
-							<label htmlFor="name">Username</label>
+							<label htmlFor='name'>Username</label>
 						</div>
-						<div className="input">
+						<div className='input'>
 							<input
-								name="password"
+								name='password'
 								value={password}
 								onChange={this.handleChange}
-								type="password"
+								type='password'
 								required
 							/>
-							<label htmlFor="email">Password</label>
+							<label htmlFor='email'>Password</label>
 						</div>
-						<button type="submit" disabled={isSubmit}>
+						<button type='submit' disabled={isSubmit}>
 							{this.renderButtonContent()}
 						</button>
 					</form>
