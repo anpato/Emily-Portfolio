@@ -52,8 +52,10 @@ class Login extends Component {
 	}
 
 	render() {
-		const { username, password, isSubmit } = this.state
-
+		const { username, password, isSubmit, token } = this.state
+		if (token) {
+			return <Redirect to='/' />
+		}
 		return (
 			<div className='login'>
 				<div className='form-container'>

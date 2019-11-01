@@ -13,7 +13,7 @@ export const Private = ({ match }) => {
 				/>
 				<Route
 					exact
-					path={`${match.url}/login`}
+					path={`admin/login`}
 					render={(props) => <Login {...props} />}
 				/>
 				<Route

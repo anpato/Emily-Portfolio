@@ -15,10 +15,8 @@ const AdminSidebar = ({ open, location, history, onClick }) => {
 				<Button
 					onClick={onClick}
 					title='Dashboard'
-					path={`/admin/dashboard`}
-					className={
-						location.pathname === '/admin/dashboard' ? 'active' : 'inactive'
-					}
+					path={`/admin/`}
+					className={location.pathname === '/admin' ? 'active' : 'inactive'}
 				/>
 				<Button
 					onClick={onClick}
@@ -29,9 +27,8 @@ const AdminSidebar = ({ open, location, history, onClick }) => {
 					}
 				/>
 				<Button
-					onClick={async () => await logOutUser().then(history.push('/'))}
+					onClick={() => logOutUser().then(() => history.push('/'))}
 					title='Log Out'
-					path='/'
 					className='inactive'
 				/>
 			</div>

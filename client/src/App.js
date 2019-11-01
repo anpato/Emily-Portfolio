@@ -15,10 +15,12 @@ function App({ location }) {
 	const token = localStorage.getItem('token')
 	return (
 		<div className='main'>
-			{location.pathname === `/admin/` ? null : location.pathname.includes(
-					'admin'
-			  ) && location.pathname !== '/admin' ? (
+			{location.pathname.includes('admin') &&
+			!location.pathname.includes('login') ? (
 				<AdminSidebar open={open} onClick={() => toggleOpen(!open)} />
+			) : location.pathname.includes('login') &&
+			  !location.pathname.includes('admin') ? (
+				<Sidebar open={open} onClick={() => toggleOpen(!open)} />
 			) : (
 				<Sidebar open={open} onClick={() => toggleOpen(!open)} />
 			)}

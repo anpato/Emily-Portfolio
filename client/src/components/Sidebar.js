@@ -60,7 +60,7 @@ const Sidebar = (props) => {
 					</a>
 				</div>
 				<div className='people'>
-					<Button path='/admin' title='Emily Peres' />
+					<Button path='/admin/login' title='Emily Peres' />
 					<a
 						href='https://www.linkedin.com/in/anpato/'
 						target='_blank'
