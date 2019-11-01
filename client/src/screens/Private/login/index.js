@@ -29,7 +29,7 @@ class Login extends Component {
 		try {
 			const login = await loginUser({ username, password })
 			if (login.status === 200)
-				this.props.history.push('/admin/dashboard', { token: login.token })
+				this.props.history.push('/admin', { token: login.token })
 		} catch (error) {
 			this.setState({
 				isError: true,
