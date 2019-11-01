@@ -20,7 +20,9 @@ class Home extends Component {
 		try {
 			const projects = await getCarouselImages()
 			this.setState({ projects, loading: false })
-		} catch (error) {}
+		} catch (error) {
+			throw error
+		}
 	}
 
 	render() {

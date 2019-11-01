@@ -1,10 +1,6 @@
 import React from 'react'
-import { withRouter, Link } from 'react-router-dom'
-import {
-	FacebookSquareIcon,
-	InstagramIcon,
-	LinkedinIcon
-} from '@patternfly/react-icons'
+import { withRouter } from 'react-router-dom'
+import { InstagramIcon, LinkedinIcon } from '@patternfly/react-icons'
 import { Button } from './common'
 import Logo from '../assets/logo.png'
 
@@ -50,19 +46,27 @@ const Sidebar = (props) => {
 			</div>
 			<div>
 				<div className='social'>
-					<a>
-						<FacebookSquareIcon size='lg' />
-					</a>
-					<a>
+					<a
+						href='https://www.instagram.com/emilymperes_design'
+						target='_blank'
+						rel='noopener noreferrer'>
 						<InstagramIcon size='lg' />
 					</a>
-					<a>
+					<a
+						target='_blank'
+						rel='noopener noreferrer'
+						href='https://www.linkedin.com/in/emily-peres-8a04b7188/'>
 						<LinkedinIcon size='lg' />
 					</a>
 				</div>
 				<div className='people'>
 					<Button path='/admin' title='Emily Peres' />
-					<a href='https://www.linkedin.com/in/anpato/'>Built By Andre Pato</a>
+					<a
+						href='https://www.linkedin.com/in/anpato/'
+						target='_blank'
+						rel='noopener noreferrer'>
+						Built By Andre Pato
+					</a>
 				</div>
 			</div>
 		</div>

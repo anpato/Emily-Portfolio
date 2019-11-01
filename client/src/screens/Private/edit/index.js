@@ -3,7 +3,6 @@ import { Spinner } from '../../../components/common'
 import { getProject, updateProject } from '../../../services/ApiServices'
 import { uploadFile } from 'react-s3'
 import { AwsConfig } from '../../../services/config/AwsConfig'
-import { runInThisContext } from 'vm'
 
 class EditProject extends Component {
 	constructor(props) {

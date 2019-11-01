@@ -7,12 +7,14 @@ import Sidebar from './components/Sidebar'
 import { Hamburger } from './components/common'
 import { Private } from './screens/App/Private'
 import AdminSidebar from './components/AdminSidebar'
+import AuthenticatedRoute from './routes'
 
 function App({ location }) {
 	const [open, toggleOpen] = useState(false)
 	const toggle = open ? 'open' : null
+	const token = localStorage.getItem('token')
 	return (
-		<div className="main">
+		<div className='main'>
 			{location.pathname === `/admin/` ? null : location.pathname.includes(
 					'admin'
 			  ) && location.pathname !== '/admin' ? (
@@ -20,7 +22,7 @@ function App({ location }) {
 			) : (
 				<Sidebar open={open} onClick={() => toggleOpen(!open)} />
 			)}
-			<div className="button-container">
+			<div className='button-container'>
 				<Hamburger isOpen={open} onClick={() => toggleOpen(!open)} />
 			</div>
 			<main className={toggle}>
@@ -28,17 +30,21 @@ function App({ location }) {
 					atEnter={{ opacity: 0 }}
 					atLeave={{ opacity: 0 }}
 					atActive={{ opacity: 1 }}>
-					<Route exact path="/" component={(props) => <Home {...props} />} />
+					<Route exact path='/' component={(props) => <Home {...props} />} />
 					<Route
-						path="/contact"
+						path='/contact'
 						component={(props) => <Contact {...props} />}
 					/>
 					<Route
-						path="/portfolio"
+						path='/portfolio'
 						component={(props) => <Portfolio {...props} />}
 					/>
-					<Route path="/about" component={(props) => <About {...props} />} />
-					<Route path="/admin" component={(props) => <Private {...props} />} />
+					<Route path='/about' component={(props) => <About {...props} />} />
+					<AuthenticatedRoute
+						path='/admin'
+						token={token}
+						render={(props) => <Private {...props} />}
+					/>
 				</AnimatedSwitch>
 			</main>
 		</div>

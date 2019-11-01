@@ -4,7 +4,7 @@ import { Button } from './common'
 import Logo from '../assets/logo.png'
 import { logOutUser } from '../services/ApiServices'
 
-const AdminSidebar = ({ open, location, match, history, onClick }) => {
+const AdminSidebar = ({ open, location, history, onClick }) => {
 	const className = open ? 'sidebar sidebar-open' : 'sidebar'
 	return (
 		<div className={className}>

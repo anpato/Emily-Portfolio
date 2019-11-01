@@ -1,5 +1,5 @@
 import Axios from 'axios'
-const JwtToken = 'token'
+const JwtToken = localStorage.getItem('token') || null
 const BASE_URL =
 	window.location.hostname === 'localhost'
 		? 'http://localhost:3001'
@@ -17,7 +17,7 @@ export const loginUser = async (data) => {
 		const resp = await Api.post('/auth/login', data)
 		await localStorage.setItem('token', resp.data.token)
 		await localStorage.setItem('userId', resp.data.user._id)
-		return { status: resp.status, token: resp.data.token }
+		return { status: resp.status, token: resp.data.user.id }
 	} catch (error) {
 		throw error
 	}
