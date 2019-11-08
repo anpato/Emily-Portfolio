@@ -31,15 +31,16 @@ class Portfolio extends Component {
 				projectDisplayed: projectDisplayed[0],
 				loading: false
 			})
-			console.log(this.state.projectDisplayed)
 		} catch (error) {}
 	}
 
 	swapProject = (index, project) => {
-		this.setState({
-			projectDisplayed: this.state.projects.splice(index, 1),
-			projects: [...this.state.projects, project]
-		})
+		let projects = this.state.projects
+		let selectedProject = projects.splice(index, 1)[0]
+		this.setState((state) => ({
+			projectDisplayed: selectedProject,
+			projects: [...state.projects, project]
+		}))
 		return this.top.scrollIntoView({
 			block: 'start',
 			behavior: 'smooth'
@@ -66,28 +67,35 @@ class Portfolio extends Component {
 		}
 	}
 
-	renderCarousel = (images) => {
-		if (images.length) {
-			return this.state.projectDisplayed.images.map((project, index) => (
-				<div key={index}>
-					<img src={project} alt='carousel' />
+	renderCarousel = () => {
+		if (this.state.projectDisplayed.images.length > 1) {
+			return (
+				<Carousel
+					showThumbs={false}
+					showArrows={true}
+					showStatus={false}
+					autoPlay={true}>
+					{this.state.projectDisplayed.images.map((image, index) => (
+						<div key={index}>
+							<img src={image} alt='carousel' />
+						</div>
+					))}
+				</Carousel>
+			)
+		} else {
+			return (
+				<div>
+					<img src={this.state.projectDisplayed.images[0]} alt='carousel' />
 				</div>
-			))
+			)
 		}
 	}
+
 	renderHero = () => {
 		if (this.state.projectDisplayed) {
 			return (
 				<section className='hero'>
-					<div className='carousel-container'>
-						<Carousel
-							showThumbs={false}
-							showArrows={true}
-							showStatus={false}
-							autoPlay={true}>
-							{this.renderCarousel(this.state.projectDisplayed.images)}
-						</Carousel>
-					</div>
+					<div className='carousel-container'>{this.renderCarousel()}</div>
 					<div className='details'>
 						<h3>{this.state.projectDisplayed.title}</h3>
 						<p>{this.state.projectDisplayed.description}</p>
