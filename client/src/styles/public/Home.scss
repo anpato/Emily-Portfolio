@@ -43,6 +43,13 @@
       position: fixed;
       z-index: 100;
       display: block;
+      top: 80%;
+    }
+  }
+  .project-carousel {
+    max-height: 100vh;
+    img {
+      max-height: 100vh;
     }
   }
 }
