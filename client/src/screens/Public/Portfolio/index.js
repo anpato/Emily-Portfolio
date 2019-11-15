@@ -25,10 +25,10 @@ class Portfolio extends Component {
   fetchProjects = async () => {
     try {
       const projects = await getProjects()
-      const projectDisplayed = projects.splice(0, 1)
+      const projectDisplayed = projects[0]
       this.setState({
         projects,
-        projectDisplayed: projectDisplayed[0],
+        projectDisplayed: projectDisplayed,
         loading: false
       })
     } catch (error) {}
@@ -36,11 +36,12 @@ class Portfolio extends Component {
 
   swapProject = (index, project) => {
     let projects = this.state.projects
-    let selectedProject = projects.splice(index, 1)[0]
+    projects.splice(index, 1)
     this.setState(state => ({
-      projectDisplayed: selectedProject,
-      projects: [...state.projects, this.state.projectDisplayed]
+      projects: [...state.projects, project],
+      projectDisplayed: project
     }))
+
     return this.top.scrollIntoView({
       block: 'start',
       behavior: 'smooth'

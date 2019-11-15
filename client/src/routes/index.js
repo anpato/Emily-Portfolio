@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Route } from 'react-router-dom'
 import { Private } from '../screens/App/Private'
 import { AnimatedSwitch } from 'react-router-transition'
