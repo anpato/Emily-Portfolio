@@ -26,7 +26,7 @@ function App({ location }) {
         <Hamburger isOpen={open} onClick={() => toggleOpen(!open)} />
       </div>
       <main className={toggle}>
-        <Routes />
+        <Routes toggle={toggle} />
       </main>
     </div>
   )
