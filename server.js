@@ -17,6 +17,8 @@ class Server {
   }
 
   start() {
+    this.initDependencies()
+    this.initRoutes()
     this.app.listen(this.port, () =>
       console.log(`Server Running: ${this.port}`)
     )

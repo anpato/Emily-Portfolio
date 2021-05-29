@@ -17,7 +17,12 @@ module.exports = (sequelize, DataTypes) => {
   }
   ProjectAsset.init(
     {
-      id: DataTypes.UUID,
+      id: {
+        type: DataTypes.UUID,
+        primaryKey: true,
+        allowNull: false,
+        defaultValue: DataTypes.UUIDV4
+      },
       fileName: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -29,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
           return this.setDataValue(JSON.stringify(value))
         },
         get: function (field) {
-          return JSON.parse(this.getDataValue(field))
+          return this.getDataValue(field)
         }
       },
       projectId: {
