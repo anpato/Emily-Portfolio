@@ -1,0 +1,155 @@
+[
+  {
+    "_id": {
+      "$oid": "5dab87ee5e15830017cbc50d"
+    },
+    "images": [
+      "https://d2zapy0kvendcq.cloudfront.net/FINAL POSTER SHIPPING CONTAINERS.jpg"
+    ],
+    "title": "A Place To Design",
+    "description": "The goal of this project was to create a space that is ever-changing just like the designer itself. ",
+    "carousel": false,
+    "createdAt": {
+      "$date": "2019-10-19T22:02:22.956Z"
+    },
+    "updatedAt": {
+      "$date": "2020-07-26T19:44:12.491Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "5e10b92f5dea060017204ec6"
+    },
+    "images": ["https://d2zapy0kvendcq.cloudfront.net/house floorplan.jpg"],
+    "title": "Hand Drafted 4 bedroom 3 & 1/2 Bath home",
+    "description": "Hand Drafted two story home which shows line weights. ",
+    "carousel": false,
+    "createdAt": {
+      "$date": "2020-01-04T16:11:27.481Z"
+    },
+    "updatedAt": {
+      "$date": "2020-07-26T19:44:05.294Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "5e10c02f5dea060017204ec7"
+    },
+    "images": [
+      "https://d2zapy0kvendcq.cloudfront.net/FINAL FLOORPLAN 1.jpg",
+      "https://d2zapy0kvendcq.cloudfront.net/FINAL FLOORPLAN 2 copy.jpg",
+      "https://d2zapy0kvendcq.cloudfront.net/FINAL FLOORPLAN 3.png"
+    ],
+    "title": "Furniture Arrangement ",
+    "description": "the goal for this project was to learn how to space furniture in a room while making sure that the functionality of a space isn't compromised.",
+    "carousel": false,
+    "createdAt": {
+      "$date": "2020-01-04T16:41:19.212Z"
+    },
+    "updatedAt": {
+      "$date": "2020-07-26T19:44:08.155Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "5e10c7195dea060017204ec9"
+    },
+    "images": [
+      "https://d2zapy0kvendcq.cloudfront.net/FINAL rendered section 2D wall.jpg",
+      "https://d2zapy0kvendcq.cloudfront.net/FINAL SECTIONAL CUT 2D.png"
+    ],
+    "title": "A place to Design Sectional Cut (Sketch up) ",
+    "description": "Sectional Cut one demonstrate how the moveable walls maneuver throughout the space, while Section cut two displays where all the furniture incases and folds into its designated area. ",
+    "carousel": false,
+    "createdAt": {
+      "$date": "2020-01-04T17:10:49.528Z"
+    },
+    "updatedAt": {
+      "$date": "2020-07-26T19:54:03.225Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "5f1ddb94d775e7001713dad1"
+    },
+    "images": [
+      "https://d2zapy0kvendcq.cloudfront.net/Enscape Scene 8 render.png",
+      "https://d2zapy0kvendcq.cloudfront.net/Enscape Scene 7 render.png",
+      "https://d2zapy0kvendcq.cloudfront.net/Enscape Scene 6 render.png",
+      "https://d2zapy0kvendcq.cloudfront.net/Enscape Scene 5 render.png",
+      "https://d2zapy0kvendcq.cloudfront.net/Enscape Scene 4 render.png",
+      "https://d2zapy0kvendcq.cloudfront.net/Enscape video.mp4"
+    ],
+    "title": "4 Bedroom 3 & 1./2 Bath Rendered home",
+    "description": "Rendered home using Sketchup & Enscape to bring the project to life. ",
+    "carousel": false,
+    "createdAt": {
+      "$date": "2020-07-26T19:37:56.299Z"
+    },
+    "updatedAt": {
+      "$date": "2020-07-26T19:43:54.049Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "5f1ddf05d775e7001713dad2"
+    },
+    "images": [
+      "https://d2zapy0kvendcq.cloudfront.net/ELEVATIONS PRINT ONE FINAL.jpg"
+    ],
+    "title": "Autocad Elevations",
+    "description": "Kitchen , Living & Dinning room elevation",
+    "carousel": true,
+    "createdAt": {
+      "$date": "2020-07-26T19:52:37.067Z"
+    },
+    "updatedAt": {
+      "$date": "2020-07-26T19:52:37.067Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "5f25e72b5dfe6f001703fa0f"
+    },
+    "images": [
+      "https://d2zapy0kvendcq.cloudfront.net/1.jpg",
+      "https://d2zapy0kvendcq.cloudfront.net/2.jpg",
+      "https://d2zapy0kvendcq.cloudfront.net/3.jpg"
+    ],
+    "title": "Autocad",
+    "description": " ",
+    "carousel": false,
+    "createdAt": {
+      "$date": "2020-08-01T22:05:31.288Z"
+    },
+    "updatedAt": {
+      "$date": "2020-08-01T22:08:54.955Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "600359f299225e0017fbffca"
+    },
+    "images": [
+      "https://d2zapy0kvendcq.cloudfront.net/PROJECT 2 flooring final .jpg",
+      "https://d2zapy0kvendcq.cloudfront.net/PROJECT 2 ACTUAL Elevations.jpg"
+    ],
+    "title": "Brownstone Building Floorplan & Kitchen Elevations",
+    "description": "Brownstone Building with 2 bedrooms , 2 bath  and 1 mater suite. ",
+    "carousel": false,
+    "createdAt": {
+      "$date": "2021-01-16T21:26:10.284Z"
+    },
+    "updatedAt": {
+      "$date": "2021-01-16T21:30:18.607Z"
+    },
+    "__v": 0
+  }
+]
