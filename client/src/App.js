@@ -1,8 +1,15 @@
 import React from 'react'
-import './styles/App.scss'
+import { Container } from 'rsuite'
+import Navigation from './components/Navigation'
+import Routes from './components/Routes'
 
 function App() {
-  return <div className="main"></div>
+  return (
+    <Container style={{ height: '100vh' }}>
+      <Navigation />
+      <Routes />
+    </Container>
+  )
 }
 
-export default withRouter(App)
+export default App
