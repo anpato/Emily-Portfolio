@@ -2,7 +2,7 @@ import { useHistory, useLocation } from 'react-router'
 import { Header, Nav, Navbar } from 'rsuite'
 
 const Navigation = () => {
-  const location = useLocation()
+  // const location = useLocation()
   const history = useHistory()
   const navLinks = [
     { path: '/', text: 'Home', onSelect: (path) => history.push(path) },
@@ -14,7 +14,7 @@ const Navigation = () => {
     { path: '/about', text: 'About', onSelect: (path) => history.push(path) }
   ]
   return (
-    <Header>
+    <Header style={{ position: 'fixed', width: '100%', zIndex: 10000 }}>
       <Navbar appearance="default">
         <Navbar.Header>
           <img
@@ -27,7 +27,7 @@ const Navigation = () => {
             {navLinks.map((link) => (
               <Nav.Item
                 key={link.path}
-                active={location.pathname === link.path}
+                // active={location.pathname === link.path}
                 onSelect={() => link.onSelect(link.path)}
               >
                 {link.text}

@@ -11,12 +11,12 @@ import store from './store'
 const queryClient = new QueryClient()
 
 ReactDOM.render(
-  <BrowserRouter>
-    <QueryClientProvider client={queryClient}>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </QueryClientProvider>
-  </BrowserRouter>,
+  // <BrowserRouter>
+  <QueryClientProvider client={queryClient}>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </QueryClientProvider>,
+  // </BrowserRouter>,
   document.getElementById('root')
 )

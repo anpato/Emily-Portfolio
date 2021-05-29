@@ -1,9 +1,9 @@
 import { Button } from 'rsuite'
-import bgVideo from '../assets/bg.mp4'
+import bgVideo from '../assets/bg.gif'
 
 const Home = () => {
   return (
-    <div style={{ height: '100vh', width: '100%', overflow: 'hidden' }}>
+    <div style={{ height: '100vh', width: '100%' }}>
       <div
         style={{
           position: 'absolute',
@@ -26,13 +26,12 @@ const Home = () => {
           </Button>
         </div>
       </div>
-      <video
-        src={bgVideo}
-        autoPlay
-        loop
-        controls={false}
-        style={{ objectFit: 'cover' }}
-      />
+      <div style={{ height: '100vh' }}>
+        <img
+          src={bgVideo}
+          style={{ height: '100%', objectFit: 'cover', width: '100%' }}
+        />
+      </div>
     </div>
   )
 }

@@ -25,7 +25,7 @@ const Projects = ({ projects, getProjects }) => {
     )
   }
   return (
-    <Grid fluid style={{ padding: '2em' }}>
+    <Grid fluid>
       <Row gutter={10}>
         {projects.map((proj) => (
           <Col key={proj.id} xs={32} sm={24} md={6} lg={4}>
