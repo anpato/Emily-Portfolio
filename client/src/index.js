@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider, QueryCache } from 'react-query'
 import { Provider } from 'react-redux'
 import 'rsuite/dist/styles/rsuite-default.css'
 import store from './store'
+import { BrowserRouter } from 'react-router-dom'
 
 const cache = new QueryCache()
 const queryClient = new QueryClient({ queryCache: cache })
@@ -14,10 +15,12 @@ const queryConfig = {
   staleTime: 60000
 }
 ReactDOM.render(
-  <QueryClientProvider client={queryClient} config={queryConfig}>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </QueryClientProvider>,
+  <BrowserRouter>
+    <QueryClientProvider client={queryClient} config={queryConfig}>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </QueryClientProvider>
+  </BrowserRouter>,
   document.getElementById('root')
 )

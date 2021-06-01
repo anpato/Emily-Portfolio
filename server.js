@@ -1,7 +1,7 @@
 const express = require('express')
 const dependencies = require('./dependencies')
 const router = require('./router')
-
+const path = require('path')
 class Server {
   constructor(port) {
     this.port = port
@@ -14,6 +14,12 @@ class Server {
 
   initRoutes() {
     this.app.use('/api', router)
+    if (process.env.NODE_ENV === 'production') {
+      this.app.use(express.static(path.join(__dirname, 'client/build')))
+      this.app.get('*', (req, res) => {
+        res.sendFile(path.join(`${__dirname}/client/build/index.html`))
+      })
+    }
   }
 
   start() {

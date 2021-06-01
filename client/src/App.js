@@ -1,6 +1,7 @@
-import Public from './pages/Public'
+import Routes from './components/Routes'
+
 function App() {
-  return <Public />
+  return <Routes />
 }
 
 export default App

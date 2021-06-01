@@ -1,6 +1,7 @@
 .hero {
   height: 100vh;
   width: 100%;
+  position: relative;
   button {
     background-color: #0f131a !important;
     &:hover {
@@ -144,7 +145,7 @@ footer {
   z-index: 10000 !important;
 }
 
-@media (min-width: 1920px) {
+@media (max-width: 1920px) {
   .hero {
     .cover {
       .banner-logo {
