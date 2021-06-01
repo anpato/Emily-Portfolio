@@ -12,12 +12,14 @@ module.exports = {
     host: '127.0.0.1',
     dialect: 'mysql'
   },
-  use_env_variable: 'DATABASE_URL',
-  dialect: 'postgres',
-  dialectOptions: {
-    ssl: {
-      rejectUnauthorized: false,
-      require: true
+  production: {
+    use_env_variable: 'DATABASE_URL',
+    dialect: 'postgres',
+    dialectOptions: {
+      ssl: {
+        rejectUnauthorized: false,
+        require: true
+      }
     }
   }
 }
