@@ -11,13 +11,13 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
-    "react-stack-grid": "^0.7.1",
     "redux": "^4.1.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.3.0",
     "rsuite": "^4.10.1",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^2.0.3"
+    "semantic-ui-react": "^2.0.3",
+    "node-sass": "^6.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -41,7 +41,6 @@
     ]
   },
   "devDependencies": {
-    "node-sass": "^6.0.0",
     "yarn-upgrade-all": "^0.5.4"
   }
 }
