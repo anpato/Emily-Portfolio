@@ -9,14 +9,16 @@ import store from './store'
 import { BrowserRouter } from 'react-router-dom'
 
 const cache = new QueryCache()
-const queryClient = new QueryClient({ queryCache: cache })
-const queryConfig = {
-  retry: 0,
-  staleTime: 60000
-}
+const queryClient = new QueryClient({
+  queryCache: cache,
+  defaultOptions: {
+    staleTime: Infinity
+  }
+})
+
 ReactDOM.render(
   <BrowserRouter>
-    <QueryClientProvider client={queryClient} config={queryConfig}>
+    <QueryClientProvider client={queryClient}>
       <Provider store={store}>
         <App />
       </Provider>
