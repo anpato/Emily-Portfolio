@@ -1,36 +1,26 @@
 import { Button } from 'rsuite'
 import bgVideo from '../assets/bg.gif'
 
-const Home = () => {
+const Home = ({ handleScroll }) => {
   return (
-    <div style={{ height: '100vh', width: '100%' }}>
-      <div
-        style={{
-          position: 'absolute',
-          height: '100vh',
-          width: '100%',
-          backgroundColor: 'rgba(255,255,255,0.3)',
-          zIndex: 1000,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}
-      >
-        <div style={{ textAlign: 'center', width: '20%' }}>
+    <div className="hero">
+      <div className="cover">
+        <div className="banner-logo">
           <img
             src="https://d2zapy0kvendcq.cloudfront.net/assets/logo.png"
-            style={{ maxWidth: '50%', margin: 'auto' }}
+            alt=""
           />
-          <Button color="blue" size="lg" style={{ width: '100%' }}>
+          <Button
+            color="blue"
+            size="lg"
+            onClick={() => handleScroll('/gallery')}
+          >
             Gallery
           </Button>
         </div>
       </div>
-      <div style={{ height: '100vh' }}>
-        <img
-          src={bgVideo}
-          style={{ height: '100%', objectFit: 'cover', width: '100%' }}
-        />
+      <div className="banner-wrapper">
+        <img alt="" src={bgVideo} />
       </div>
     </div>
   )

@@ -1,25 +1,33 @@
-import { useHistory, useLocation } from 'react-router'
 import { Header, Nav, Navbar } from 'rsuite'
 
-const Navigation = () => {
-  // const location = useLocation()
-  const history = useHistory()
+const Navigation = ({ handleScroll }) => {
   const navLinks = [
-    { path: '/', text: 'Home', onSelect: (path) => history.push(path) },
+    {
+      path: '/',
+      text: 'Home',
+      onSelect: handleScroll
+    },
+    { path: '/about', text: 'About', onSelect: () => handleScroll('/about') },
     {
       path: '/gallery',
       text: 'Gallery',
-      onSelect: (path) => history.push(path)
+      onSelect: () => handleScroll('/gallery')
     },
-    { path: '/about', text: 'About', onSelect: (path) => history.push(path) }
+
+    {
+      path: '/contact',
+      text: 'Contact',
+      onSelect: () => handleScroll('/contact')
+    }
   ]
   return (
-    <Header style={{ position: 'fixed', width: '100%', zIndex: 10000 }}>
+    <Header style={{ position: 'fixed', width: '100%', zIndex: 1000 }}>
       <Navbar appearance="default">
         <Navbar.Header>
           <img
-            src="https://d2zapy0kvendcq.cloudfront.net/assets/logo.png"
+            src="https://d2zapy0kvendcq.cloudfront.net/assets/logo-light.png"
             style={{ maxHeight: '90%', margin: 'auto 1em' }}
+            alt=""
           />
         </Navbar.Header>
         <Navbar.Body>
@@ -27,7 +35,6 @@ const Navigation = () => {
             {navLinks.map((link) => (
               <Nav.Item
                 key={link.path}
-                // active={location.pathname === link.path}
                 onSelect={() => link.onSelect(link.path)}
               >
                 {link.text}

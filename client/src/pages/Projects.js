@@ -2,25 +2,23 @@ import { connect } from 'react-redux'
 import { useQuery } from 'react-query'
 import { GetProjectData } from '../services/projects'
 import { setProjects } from '../store/actions'
-import { Divider, Loader } from 'rsuite'
-
-import { Container } from 'semantic-ui-react'
-import { Suspense } from 'react'
+import { Loader } from 'rsuite'
+import { Container, Grid } from 'semantic-ui-react'
+import React, { Suspense } from 'react'
 import PanelPlaceholder from '../components/PanelPlaceholder'
 import ProjectSegment from '../components/ProjectSegment'
 import 'semantic-ui-css/semantic.min.css'
+
 const state = (state) => ({ ...state.projects })
 const actions = (dispatch) => ({
   getProjects: (data) => dispatch(setProjects(data))
 })
-const Projects = ({ projects, getProjects }) => {
-  const { isLoading, isLoadingError, data, isSuccess } = useQuery(
-    'projects',
-    async () => {
-      let res = await GetProjectData()
-      getProjects(res)
-    }
-  )
+
+const Projects = React.forwardRef(({ projects, getProjects }, ref) => {
+  const { isLoading } = useQuery('projects', async () => {
+    let res = await GetProjectData()
+    getProjects(res)
+  })
   if (isLoading) {
     return (
       <div>
@@ -31,15 +29,15 @@ const Projects = ({ projects, getProjects }) => {
 
   return (
     <Container fluid style={{ padding: '1em', marginTop: '1em' }}>
-      <h3 style={{ textAlign: 'center' }}>Gallery</h3>
-
-      <Divider />
-
-      <Suspense fallback={<PanelPlaceholder />}>
-        <ProjectSegment projects={projects} />
-      </Suspense>
+      <div ref={ref}>
+        <Suspense fallback={<PanelPlaceholder />}>
+          <Grid columns={3} padded relaxed stackable>
+            <ProjectSegment projects={projects} />
+          </Grid>
+        </Suspense>
+      </div>
     </Container>
   )
-}
+})
 
-export default connect(state, actions)(Projects)
+export default connect(state, actions, null, { forwardRef: true })(Projects)
