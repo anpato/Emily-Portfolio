@@ -3,7 +3,6 @@ const { Project, ProjectAsset } = require('../models')
 const GetProjects = async (req, res) => {
   try {
     const projects = await Project.findAll({
-      attributes: ['id', 'title', 'createdAt'],
       order: [['createdAt', 'DESC']],
       include: [
         { model: ProjectAsset, as: 'assets', attributes: ['id', 'metadata'] }

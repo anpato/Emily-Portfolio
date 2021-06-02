@@ -2,7 +2,8 @@ import { projectTypes } from '../types'
 
 const iState = {
   projects: [],
-  currentProjectView: null
+  currentProjectView: null,
+  targetItem: null
 }
 
 export const ProjectReducer = (state = iState, { type, payload }) => {
@@ -10,7 +11,16 @@ export const ProjectReducer = (state = iState, { type, payload }) => {
     case projectTypes.GET_PROJECTS:
       return { ...state, projects: payload }
     case projectTypes.SELECT_PROJECT:
-      return { ...state, currentProjectView: payload }
+      let curState = !payload
+        ? {
+            currentProjectView: null,
+            targetItem: null
+          }
+        : { currentProjectView: payload }
+
+      return { ...state, ...curState }
+    case projectTypes.SET_TARGET_ITEM:
+      return { ...state, targetItem: payload }
     default:
       return state
   }

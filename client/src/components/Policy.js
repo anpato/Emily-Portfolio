@@ -17,6 +17,7 @@ const Policy = () => {
         <a
           href="https://www.privacypolicies.com/privacy-policy-generator/"
           target="_blank"
+          rel="external nofollow noopener noreferrer"
         >
           Privacy Policy Generator
         </a>
@@ -98,7 +99,7 @@ const Policy = () => {
             <strong>Website</strong> refers to Emily Peres, accessible from{' '}
             <a
               href="https://emilymperes.com"
-              rel="external nofollow noopener"
+              rel="external nofollow noopener noreferrer"
               target="_blank"
             >
               https://emilymperes.com
@@ -181,7 +182,7 @@ const Policy = () => {
           disabling, or deleting local shared objects?&quot; available at{' '}
           <a
             href="https://helpx.adobe.com/flash-player/kb/disable-local-shared-objects-flash.html#main_Where_can_I_change_the_settings_for_disabling__or_deleting_local_shared_objects_"
-            rel="external nofollow noopener"
+            rel="external nofollow noopener noreferrer"
             target="_blank"
           >
             https://helpx.adobe.com/flash-player/kb/disable-local-shared-objects-flash.html#main_Where_can_I_change_the_settings_for_disabling__or_deleting_local_shared_objects_
@@ -202,7 +203,11 @@ const Policy = () => {
         Persistent Cookies remain on Your personal computer or mobile device
         when You go offline, while Session Cookies are deleted as soon as You
         close Your web browser. Learn more about cookies:{' '}
-        <a href="https://www.privacypolicies.com/blog/cookies/" target="_blank">
+        <a
+          href="https://www.privacypolicies.com/blog/cookies/"
+          rel="external nofollow noopener noreferrer"
+          target="_blank"
+        >
           What Are Cookies?
         </a>
         .
@@ -491,7 +496,7 @@ const Policy = () => {
           By visiting this page on our website:{' '}
           <a
             href="https://emilymperes.com"
-            rel="external nofollow noopener"
+            rel="external nofollow noopener noreferrer"
             target="_blank"
           >
             https://emilymperes.com
