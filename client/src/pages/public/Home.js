@@ -1,5 +1,5 @@
 import { Button } from 'rsuite'
-import bgVideo from '../assets/bg.gif'
+import bgVideo from '../../assets/bg.gif'
 
 const Home = ({ handleScroll }) => {
   return (

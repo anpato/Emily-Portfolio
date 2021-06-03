@@ -9,5 +9,11 @@ export const contactTypes = {
 }
 
 export const uiTypes = {
-  TOGGLE_POLICY: 'TOGGLE_POLICY'
+  TOGGLE_POLICY: 'TOGGLE_POLICY',
+  TOGGLE_DRAWER: 'TOGGLE_DRAWER'
+}
+
+export const uploadTypes = {
+  APPEND_FILE_LIST: 'APPEND_FILE_LIST',
+  UPLOAD_CHANGE: 'UPLOAD_CHANGE'
 }

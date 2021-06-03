@@ -1,0 +1,70 @@
+@media (max-width: 1920px) {
+  .hero {
+    .cover {
+      .banner-logo {
+        text-align: center;
+        width: 30% !important;
+        img {
+          max-width: 40%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .icon-wrapper {
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .policy-links {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  .hero {
+    .cover {
+      .banner-logo {
+        text-align: center;
+        width: 80% !important;
+        img {
+          max-width: 80%;
+          margin: auto;
+        }
+        button {
+          width: 100%;
+        }
+      }
+    }
+  }
+  .contact-container {
+    form {
+      width: 100%;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero {
+    .cover {
+      .banner-logo {
+        text-align: center;
+        width: 40% !important;
+        img {
+          max-width: 80%;
+          margin: auto;
+        }
+        button {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .contact-container {
+    form {
+      width: 60%;
+    }
+  }
+}

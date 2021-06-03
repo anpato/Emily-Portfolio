@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Button, Input, Divider } from 'rsuite'
-import { HandleContactForm } from '../store/actions'
+import { HandleContactForm } from '../../store/actions'
 
 const state = ({ contact }) => ({ contact })
 const actions = (dispatch) => ({

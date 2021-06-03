@@ -1,0 +1,21 @@
+export const allowedExts = [
+  '.jpg',
+  '.png',
+  '.gif',
+  '.webp',
+  '.tiff',
+  '.psd',
+  '.raw',
+  '.bmp',
+  '.heif',
+  '.indd',
+  '.jpeg 2000',
+  '.mp4',
+  '.3gp',
+  '.ogg',
+  '.wmv',
+  '.webm',
+  '.flv',
+  '.avi',
+  '.hdv'
+]

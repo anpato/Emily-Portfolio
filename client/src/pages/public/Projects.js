@@ -1,14 +1,18 @@
 import { connect } from 'react-redux'
 import { useQuery } from 'react-query'
-import { GetProjectData } from '../services/projects'
-import { SelectProject, SetProjects, TargetDisplayItem } from '../store/actions'
+import { GetProjectData } from '../../services/projects'
+import {
+  SelectProject,
+  SetProjects,
+  TargetDisplayItem
+} from '../../store/actions'
 import { Loader } from 'rsuite'
 import { Container, Grid } from 'semantic-ui-react'
 import React, { Suspense } from 'react'
-import PanelPlaceholder from '../components/PanelPlaceholder'
-import ProjectSegment from '../components/ProjectSegment'
+import PanelPlaceholder from '../../components/PanelPlaceholder'
+import ProjectSegment from '../../components/ProjectSegment'
+import AssetView from '../../components/AssetView'
 import 'semantic-ui-css/semantic.min.css'
-import AssetView from '../components/AssetView'
 
 const state = (state) => ({ ...state.projects })
 const actions = (dispatch) => ({
