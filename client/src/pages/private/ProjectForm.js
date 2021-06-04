@@ -8,14 +8,20 @@ import {
   Notification,
   List
 } from 'rsuite'
-import { SetUploadForm, UpdateFileList } from '../../store/actions'
+import { PreloadForm, SetUploadForm, UpdateFileList } from '../../store/actions'
 import path from 'path'
 import { allowedExts } from '../../utils'
-const state = ({ upload }) => ({ ...upload })
+import Previews from '../../components/Previews'
+import { useEffect } from 'react'
+const state = ({ upload, adminProjects }) => ({
+  ...upload,
+  selectedProject: adminProjects.selectedProject
+})
 
 const actions = (dispatch) => ({
   setForm: (name, value) => dispatch(SetUploadForm(name, value)),
-  updateFileList: (files) => dispatch(UpdateFileList(files))
+  updateFileList: (files) => dispatch(UpdateFileList(files)),
+  preloadForm: (payload) => dispatch(PreloadForm(payload))
 })
 
 const ProjectForm = ({
@@ -23,8 +29,24 @@ const ProjectForm = ({
   updateFileList,
   files,
   title,
-  description
+  description,
+  isEdit,
+  selectedProject,
+  preloadForm
 }) => {
+  useEffect(() => {
+    if (isEdit) {
+      preloadForm({
+        title: selectedProject.title,
+        description: selectedProject.description,
+        files: selectedProject.assets.map((img) => ({
+          name: img.fileName,
+          fileKey: img.id,
+          url: img.metadata.src
+        }))
+      })
+    }
+  }, [])
   const handleChange = (value, { target }) => {
     setForm(target.name, value)
   }
@@ -32,6 +54,9 @@ const ProjectForm = ({
   const handleSubmit = async (e) => {
     e.preventDefault()
     let fileList = files.map((f) => new File([f.blobFile], f.name))
+    if (isEdit) {
+      console.log('Update')
+    }
     console.log(fileList)
   }
 
@@ -86,6 +111,7 @@ const ProjectForm = ({
         <Uploader
           className={files.length ? 'uploader' : null}
           fileList={files}
+          defaultFileList={files}
           listType="picture-text"
           shouldQueueUpdate={(_, file) => checkFile(file)}
           multiple

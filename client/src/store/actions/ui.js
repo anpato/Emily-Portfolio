@@ -9,3 +9,8 @@ export const ToggleDrawer = (value) => ({
   type: uiTypes.TOGGLE_DRAWER,
   payload: value
 })
+
+export const ToggleDelete = (value) => ({
+  type: uiTypes.TOGGLE_DELETE,
+  payload: value
+})

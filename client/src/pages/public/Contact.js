@@ -43,7 +43,7 @@ const Contact = React.forwardRef(({ contact, setForm }, ref) => {
         />
         <Button
           disabled={!contact.name || !contact.email || !contact.message}
-          color="blue"
+          appearance="primary"
         >
           Send
         </Button>

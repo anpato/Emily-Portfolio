@@ -1,8 +1,9 @@
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 import { Badge, Header, Icon, Nav, Navbar } from 'rsuite'
 
 const Navigation = ({ handleScroll, toggleDrawer, notifications }) => {
   const history = useHistory()
+  const location = useLocation()
   const navLinks = [
     {
       path: '/',
@@ -27,49 +28,46 @@ const Navigation = ({ handleScroll, toggleDrawer, notifications }) => {
     {
       path: '/dashboard',
       text: 'Dashboard',
-      onSelect: () => {}
+      onSelect: () => history.push('/dashboard')
     },
     {
       path: '/messages',
       text: 'Messages',
       disabled: true,
       onSelect: () => {}
-    },
-    {
-      path: '/gallery',
-      text: 'Gallery',
-
-      onSelect: () => {}
     }
   ]
 
   const publicOptions = (
-    <Navbar appearance="default">
-      <Navbar.Header>
-        <img
-          src="https://d2zapy0kvendcq.cloudfront.net/assets/logo-light.png"
-          style={{ maxHeight: '90%', margin: 'auto 1em' }}
-          alt=""
-        />
-      </Navbar.Header>
-      <Navbar.Body>
-        <Nav style={{ fontWeight: '800' }}>
-          {navLinks.map((link) => (
-            <Nav.Item
-              className="nav-link"
-              key={link.path}
-              onSelect={() => link.onSelect(link.path)}
-            >
-              {link.text}
-            </Nav.Item>
-          ))}
-        </Nav>
-      </Navbar.Body>
-    </Navbar>
+    <Header style={{ width: '100%', zIndex: 1000 }}>
+      <Navbar appearance="default">
+        <Navbar.Header>
+          <img
+            src="https://d2zapy0kvendcq.cloudfront.net/assets/logo-light.png"
+            style={{ maxHeight: '90%', margin: 'auto 1em' }}
+            alt=""
+          />
+        </Navbar.Header>
+        <Navbar.Body>
+          <Nav style={{ fontWeight: '800' }}>
+            {navLinks.map((link) => (
+              <Nav.Item
+                className="nav-link"
+                active={location.pathname.includes(link.path)}
+                key={link.path}
+                onSelect={() => link.onSelect(link.path)}
+              >
+                {link.text}
+              </Nav.Item>
+            ))}
+          </Nav>
+        </Navbar.Body>
+      </Navbar>
+    </Header>
   )
 
   const privateOptions = (
-    <Navbar appearance="default">
+    <Navbar appearance="inverse">
       <Navbar.Header>
         <img
           src="https://d2zapy0kvendcq.cloudfront.net/assets/logo-light.png"
@@ -109,9 +107,7 @@ const Navigation = ({ handleScroll, toggleDrawer, notifications }) => {
     </Navbar>
   )
 
-  return (
-    <Header style={{ width: '100%', zIndex: 1000 }}>{privateOptions}</Header>
-  )
+  return privateOptions
 }
 
 export default Navigation

@@ -11,7 +11,7 @@ const Home = ({ handleScroll }) => {
             alt=""
           />
           <Button
-            color="blue"
+            appearance="primary"
             size="lg"
             onClick={() => handleScroll('/gallery')}
           >

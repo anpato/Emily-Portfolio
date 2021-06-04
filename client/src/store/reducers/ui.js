@@ -2,7 +2,8 @@ import { uiTypes } from '../types'
 
 const iState = {
   policyShow: false,
-  drawerShow: false
+  drawerShow: false,
+  toggleDelete: false
 }
 
 export const UIReducer = (state = iState, { type, payload }) => {
@@ -11,6 +12,8 @@ export const UIReducer = (state = iState, { type, payload }) => {
       return { ...state, policyShow: payload }
     case uiTypes.TOGGLE_DRAWER:
       return { ...state, drawerShow: payload }
+    case uiTypes.TOGGLE_DELETE:
+      return { ...state, toggleDelete: payload }
     default:
       return state
   }

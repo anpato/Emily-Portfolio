@@ -1,14 +1,14 @@
 import { connect } from 'react-redux'
 import { useRef } from 'react'
 import { Container, Modal } from 'rsuite'
-import Navigation from '../../components/Navigation'
-import Contact from './Contact'
-import Home from './Home'
-import Projects from './Projects'
-import About from './About'
-import Footer from './Footer'
-import Policy from '../../components/Policy'
-import { TogglePolicy } from '../../store/actions'
+import Navigation from '../components/Navigation'
+import Contact from './public/Contact'
+import Home from './public/Home'
+import Projects from './public/Projects'
+import About from './public/About'
+import Footer from './public/Footer'
+import Policy from '../components/Policy'
+import { TogglePolicy } from '../store/actions'
 
 const state = ({ ui }) => ({ ...ui })
 const actions = (dispatch) => ({

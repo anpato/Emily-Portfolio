@@ -3,8 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "less": "^3.11.1",
+    "less-loader": "^6.0.0",
     "axios": "^0.21.1",
+    "customize-cra": "^1.0.0",
+    "node-sass": "^6.0.0",
     "react": "^17.0.2",
+    "react-app-rewired": "^2.1.8",
     "react-dom": "^17.0.2",
     "react-query": "^3.16.0",
     "react-redux": "^7.2.4",
@@ -16,14 +21,12 @@
     "redux-thunk": "^2.3.0",
     "rsuite": "^4.10.1",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^2.0.3",
-    "node-sass": "^6.0.0"
+    "semantic-ui-react": "^2.0.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "eject": "react-app-rewired eject"
   },
   "eslintConfig": {
     "extends": "react-app"

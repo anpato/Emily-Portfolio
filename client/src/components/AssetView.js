@@ -38,6 +38,7 @@ const AssetView = ({
                       <img
                         onClick={() => targetDisplayItem(asset)}
                         src={asset.metadata.src}
+                        alt=""
                         style={{ width: '100%', cursor: 'pointer' }}
                       />
                     ) : (
@@ -57,6 +58,7 @@ const AssetView = ({
               <div className="display-wrapper">
                 {targetItem && targetItem.metadata.metaType === 'image' ? (
                   <img
+                    alt="preview"
                     src={targetItem.metadata.src}
                     style={{ width: '100%' }}
                   />

@@ -17,7 +17,13 @@ const GetProjects = async (req, res) => {
 const ViewProject = async (req, res) => {
   try {
     const project = await Project.findByPk(req.params.project_id, {
-      include: [{ model: ProjectAsset, as: 'assets' }]
+      include: [
+        {
+          model: ProjectAsset,
+          as: 'assets',
+          attributes: ['id', 'metadata', 'fileName']
+        }
+      ]
     })
     res.send(project)
   } catch (error) {
