@@ -7,7 +7,7 @@ const ProjectSegment = ({ projects, selectProject }) => {
         <Grid.Column verticalAlign="middle" textAlign="center">
           <img
             style={{ width: '100%', objectFit: 'cover' }}
-            src={proj.assets[0].metadata.src || ''}
+            src={proj.assets.length ? proj.assets[0].metadata.src : ''}
             alt=""
           />
         </Grid.Column>

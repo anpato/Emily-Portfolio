@@ -1,5 +1,6 @@
 export const allowedExts = [
   '.jpg',
+  '.jpeg',
   '.png',
   '.gif',
   '.webp',

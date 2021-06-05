@@ -6,13 +6,21 @@ import {
   Panel,
   Uploader,
   Notification,
-  List
+  List,
+  Alert
 } from 'rsuite'
-import { PreloadForm, SetUploadForm, UpdateFileList } from '../../store/actions'
+import {
+  PreloadForm,
+  SetUploadForm,
+  SwapUpdate,
+  UpdateFileList
+} from '../../store/actions'
+import { Redirect, useParams } from 'react-router-dom'
 import path from 'path'
 import { allowedExts } from '../../utils'
-import Previews from '../../components/Previews'
+import { useMutation } from 'react-query'
 import { useEffect } from 'react'
+import { UpdateProject } from '../../services/projects'
 const state = ({ upload, adminProjects }) => ({
   ...upload,
   selectedProject: adminProjects.selectedProject
@@ -21,7 +29,8 @@ const state = ({ upload, adminProjects }) => ({
 const actions = (dispatch) => ({
   setForm: (name, value) => dispatch(SetUploadForm(name, value)),
   updateFileList: (files) => dispatch(UpdateFileList(files)),
-  preloadForm: (payload) => dispatch(PreloadForm(payload))
+  preloadForm: (payload) => dispatch(PreloadForm(payload)),
+  swapUpdate: (data) => dispatch(SwapUpdate(data))
 })
 
 const ProjectForm = ({
@@ -32,8 +41,15 @@ const ProjectForm = ({
   description,
   isEdit,
   selectedProject,
-  preloadForm
+  preloadForm,
+  swapUpdate
 }) => {
+  const mutation = useMutation(async (data) => {
+    const res = await UpdateProject(data.formData, data.id)
+    swapUpdate(res)
+    return
+  })
+  const { project_id } = useParams()
   useEffect(() => {
     if (isEdit) {
       preloadForm({
@@ -51,19 +67,35 @@ const ProjectForm = ({
     setForm(target.name, value)
   }
 
+  const handleEdit = () => {
+    const formData = new FormData()
+    formData.append('description', description)
+    formData.append('title', title)
+    files.forEach((f) => {
+      if (f.blobFile) {
+        formData.append('uploads', new File([f.blobFile], f.name))
+      } else {
+        formData.append('assets', JSON.stringify(f))
+      }
+    })
+    mutation.mutateAsync({ formData, id: project_id })
+    if (mutation.isError) {
+      return Alert.error('Upload Failed')
+    }
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
-    let fileList = files.map((f) => new File([f.blobFile], f.name))
     if (isEdit) {
-      console.log('Update')
+      handleEdit()
     }
-    console.log(fileList)
   }
 
   const checkFile = (file) => {
     let filePath = path.extname(file[0].name)
     let reason = ''
     if (!allowedExts.includes(filePath)) {
+      reason = 'Invalid File Type'
       Notification.error({
         duration: 8500,
         title: reason,
@@ -91,6 +123,10 @@ const ProjectForm = ({
 
     return true
   }
+  if (mutation.isSuccess) {
+    Alert.success('Project Updated!')
+    return <Redirect to="/dashboard" />
+  }
 
   return (
     <Panel bordered className="upload-center">
@@ -116,6 +152,7 @@ const ProjectForm = ({
           shouldQueueUpdate={(_, file) => checkFile(file)}
           multiple
           autoUpload={false}
+          maxPreviewFileSize={9242880}
           draggable
           accept="image/*,video/*"
           onError={(error) => console.log(error)}
@@ -134,7 +171,8 @@ const ProjectForm = ({
           </div>
         </Uploader>
         <Button
-          disabled={!title || !description || !files.length}
+          loading={mutation.isLoading}
+          disabled={!title || !description}
           type="submit"
           appearance="primary"
         >

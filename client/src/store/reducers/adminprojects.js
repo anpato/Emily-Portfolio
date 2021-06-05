@@ -17,6 +17,11 @@ export const AdminProjectReducer = (state = iState, { type, payload }) => {
     case adminProjectTypes.DELETE_PROJECT:
       const projs = state.projects.filter((p) => p.id !== payload)
       return { ...state, projects: projs }
+    case adminProjectTypes.SWAP_UPDATE:
+      let target = state.projects.findIndex((p) => p.id === payload.id)
+      let updated = [...state.projects]
+      updated.splice(target, 1, payload)
+      return { ...state, projects: updated }
     default:
       return state
   }

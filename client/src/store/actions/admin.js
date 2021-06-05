@@ -19,3 +19,8 @@ export const GetDashProjects = (data) => ({
   type: adminProjectTypes.GET_DASH_PROJECTS,
   payload: data
 })
+
+export const SwapUpdate = (data) => ({
+  type: adminProjectTypes.SWAP_UPDATE,
+  payload: data
+})

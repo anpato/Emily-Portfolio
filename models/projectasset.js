@@ -1,5 +1,6 @@
 'use strict'
 const { Model } = require('sequelize')
+const uploader = require('../aws/uploader')
 module.exports = (sequelize, DataTypes) => {
   class ProjectAsset extends Model {
     /**
@@ -30,9 +31,6 @@ module.exports = (sequelize, DataTypes) => {
       },
       metadata: {
         type: DataTypes.JSONB,
-        set: function (value) {
-          return this.setDataValue(JSON.stringify(value))
-        },
         get: function (field) {
           return this.getDataValue(field)
         }
@@ -51,7 +49,14 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: 'ProjectAsset',
-      tableName: 'project_assets'
+      tableName: 'project_assets',
+      hooks: {
+        beforeBulkDestroy: async function () {},
+        beforeDestroy: async function (instance) {
+          await uploader.destroyFile(instance.fileName)
+          console.log('Destroying File', instance.fileName)
+        }
+      }
     }
   )
   return ProjectAsset

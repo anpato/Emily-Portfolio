@@ -1,4 +1,6 @@
 const { S3 } = require('aws-sdk')
+const { accessKeyId, awsSecret, awsRegion, awsBucket } = require('../env')
+const { genMetatype } = require('../utils')
 
 class Uploader {
   constructor(accessKeyId, secret, region, bucket) {
@@ -8,20 +10,33 @@ class Uploader {
 
   async upload(file, projectId) {
     try {
-      let filename = `${projectId}/${file.originalname}`
+      console.log(this.bucket)
+      let filename = `resources/${projectId}/${file.originalname}`
+      const fileType = genMetatype(file.originalname)
       const job = await this.s3
         .upload({
           Body: file.buffer,
           Key: filename,
-          ContentType: file.mimeType,
+          ACL: 'public-read',
+          ContentType: `${fileType}/${file.originalname.split('.')[1]}`,
           Bucket: this.bucket
         })
         .promise()
-      return job.Location
+      return { location: job.Location, filename }
+    } catch (error) {
+      throw error
+    }
+  }
+  async destroyFile(filename) {
+    try {
+      const deleted = await this.s3
+        .deleteObject({ Bucket: this.bucket, Key: filename })
+        .promise()
+      return deleted.DeleteMarker
     } catch (error) {
       throw error
     }
   }
 }
 
-module.exports = Uploader
+module.exports = new Uploader(accessKeyId, awsSecret, awsRegion, awsBucket)

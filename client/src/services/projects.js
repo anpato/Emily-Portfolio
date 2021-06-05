@@ -17,3 +17,12 @@ export const GetProjectById = async (projectId) => {
     throw error
   }
 }
+
+export const UpdateProject = async (formData, projectId) => {
+  try {
+    const res = await api.put(`/projects/${projectId}`, formData)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
