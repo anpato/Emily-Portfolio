@@ -43,7 +43,7 @@ const Navigation = ({ handleScroll, toggleDrawer, notifications }) => {
       <Navbar appearance="default">
         <Navbar.Header>
           <img
-            src="https://d2zapy0kvendcq.cloudfront.net/assets/logo-light.png"
+            src="https://d2okcu8v62pl37.cloudfront.net/resources/assets/logo-light.png"
             style={{ maxHeight: '90%', margin: 'auto 1em' }}
             alt=""
           />
@@ -70,7 +70,7 @@ const Navigation = ({ handleScroll, toggleDrawer, notifications }) => {
     <Navbar appearance="inverse">
       <Navbar.Header>
         <img
-          src="https://d2zapy0kvendcq.cloudfront.net/assets/logo-light.png"
+          src="https://d2okcu8v62pl37.cloudfront.net/resources/assets/logo-light.png"
           style={{ maxHeight: '90%', margin: 'auto 1em' }}
           alt=""
         />

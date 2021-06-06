@@ -24,3 +24,8 @@ export const SwapUpdate = (data) => ({
   type: adminProjectTypes.SWAP_UPDATE,
   payload: data
 })
+
+export const AppendProject = (data) => ({
+  type: adminProjectTypes.APPEND_PROJECT,
+  payload: data
+})

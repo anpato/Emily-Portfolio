@@ -10,6 +10,7 @@ import {
   Alert
 } from 'rsuite'
 import {
+  AppendProject,
   PreloadForm,
   SetUploadForm,
   SwapUpdate,
@@ -20,7 +21,7 @@ import path from 'path'
 import { allowedExts } from '../../utils'
 import { useMutation } from 'react-query'
 import { useEffect } from 'react'
-import { UpdateProject } from '../../services/projects'
+import { UpdateProject, UploadProject } from '../../services/projects'
 const state = ({ upload, adminProjects }) => ({
   ...upload,
   selectedProject: adminProjects.selectedProject
@@ -30,7 +31,8 @@ const actions = (dispatch) => ({
   setForm: (name, value) => dispatch(SetUploadForm(name, value)),
   updateFileList: (files) => dispatch(UpdateFileList(files)),
   preloadForm: (payload) => dispatch(PreloadForm(payload)),
-  swapUpdate: (data) => dispatch(SwapUpdate(data))
+  swapUpdate: (data) => dispatch(SwapUpdate(data)),
+  appendProject: (data) => dispatch(AppendProject(data))
 })
 
 const ProjectForm = ({
@@ -42,11 +44,18 @@ const ProjectForm = ({
   isEdit,
   selectedProject,
   preloadForm,
-  swapUpdate
+  swapUpdate,
+  appendProject
 }) => {
   const mutation = useMutation(async (data) => {
     const res = await UpdateProject(data.formData, data.id)
     swapUpdate(res)
+    return
+  })
+
+  const uploadMutation = useMutation(async (data) => {
+    const res = await UploadProject(data)
+    appendProject(res)
     return
   })
   const { project_id } = useParams()
@@ -61,6 +70,9 @@ const ProjectForm = ({
           url: img.metadata.src
         }))
       })
+    }
+    return () => {
+      preloadForm()
     }
   }, [])
   const handleChange = (value, { target }) => {
@@ -87,7 +99,17 @@ const ProjectForm = ({
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (isEdit) {
-      handleEdit()
+      return handleEdit()
+    }
+    const formData = new FormData()
+    formData.append('title', title)
+    formData.append('description', description)
+    files.forEach((f) =>
+      formData.append('uploads', new File([f.blobFile], f.name))
+    )
+    uploadMutation.mutate(formData)
+    if (uploadMutation.isError) {
+      return Alert.error('Upload Failed')
     }
   }
 
@@ -123,8 +145,8 @@ const ProjectForm = ({
 
     return true
   }
-  if (mutation.isSuccess) {
-    Alert.success('Project Updated!')
+  if (mutation.isSuccess || uploadMutation.isSuccess) {
+    Alert.success('Project Uploaded!')
     return <Redirect to="/dashboard" />
   }
 

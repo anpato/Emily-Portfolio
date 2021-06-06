@@ -1,12 +1,12 @@
 import { useEffect } from 'react'
-import { useQuery } from 'react-query'
+import { useMutation, useQuery } from 'react-query'
 import { connect } from 'react-redux'
-import { useHistory, useParams } from 'react-router'
+import { Redirect, useHistory, useParams } from 'react-router'
 import { Panel, Animation, Divider, Loader, Alert } from 'rsuite'
 import { Grid } from 'semantic-ui-react'
 import ButtonToolBar from '../../components/ButtonToolbar'
 import DeleteConfirm from '../../components/DeleteConfirm'
-import { GetProjectById } from '../../services/projects'
+import { DeleteProject, GetProjectById } from '../../services/projects'
 import {
   RemoveProject,
   SelectProjectPreview,
@@ -40,11 +40,15 @@ const ViewProject = ({
     const res = await GetProjectById(project_id)
     selectProject(res)
   })
+  const mutation = useMutation(async (data) => {
+    const res = await DeleteProject(data)
+    removeProject(res)
+  })
   const { Collapse } = Animation
 
   const handleRemove = () => {
-    removeProject(project_id)
     Alert.config({ duration: 4000 })
+    mutation.mutate(project_id)
     Alert.info('Project Successfully Removed')
     toggleDelete(false)
     history.push('/dashboard')
@@ -62,6 +66,9 @@ const ViewProject = ({
   }, [project_id])
   if (isLoading) {
     return <Loader center backdrop size="lg" />
+  }
+  if (mutation.isSuccess) {
+    return <Redirect to="/dashboard" />
   }
   return (
     <Panel bordered style={{ width: '90%', margin: '1em auto' }}>

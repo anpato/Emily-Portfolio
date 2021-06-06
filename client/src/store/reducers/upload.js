@@ -16,8 +16,12 @@ export const UploadReducer = (state = iState, { type, payload }) => {
     case uploadTypes.TOGGLE_EDIT:
       return { ...state, isEdit: payload }
     case uploadTypes.PRELOAD_FORM:
+      if (!payload) {
+        return iState
+      }
       let obj = {}
       Object.keys(payload).forEach((k) => (obj[k] = payload[k]))
+
       return { ...state, ...obj }
     default:
       return state

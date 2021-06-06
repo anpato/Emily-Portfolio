@@ -22,6 +22,8 @@ export const AdminProjectReducer = (state = iState, { type, payload }) => {
       let updated = [...state.projects]
       updated.splice(target, 1, payload)
       return { ...state, projects: updated }
+    case adminProjectTypes.APPEND_PROJECT:
+      return { ...state, projects: [payload, ...state.projects] }
     default:
       return state
   }

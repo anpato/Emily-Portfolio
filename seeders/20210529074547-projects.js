@@ -15,7 +15,7 @@ module.exports = {
           let url = im.split('/')
           let fileName = url[url.length - 1]
           let metaType = genMetatype(fileName)
-          let src = `https://d2zapy0kvendcq.cloudfront.net/${fileName}`
+          let src = `https://d2okcu8v62pl37.cloudfront.net/${fileName}`
 
           return {
             id: uuid(),

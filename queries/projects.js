@@ -1,7 +1,6 @@
 const { Op } = require('sequelize')
-const uploader = require('../aws/uploader')
 const { Project, ProjectAsset } = require('../models')
-const { genMetatype } = require('../utils')
+const { genMetatype, uploadBulk } = require('../utils')
 
 const GetProjects = async (req, res) => {
   try {
@@ -63,18 +62,8 @@ const UpdateProject = async (req, res) => {
     }
 
     if (files.length) {
-      const uploads = await Promise.all(
-        files.map(async (f) => await uploader.upload(f, req.params.project_id))
-      )
-      let formattedFiles = uploads.map((data) => ({
-        fileName: data.filename,
-        project_id: req.params.project_id,
-        metadata: {
-          src: `https://d2okcu8v62pl37.cloudfront.net/${data.filename}`,
-          metaType: genMetatype(data.filename)
-        }
-      }))
-      await ProjectAsset.bulkCreate(formattedFiles)
+      const uploaded = await uploadBulk(files, req.params.project_id)
+      await ProjectAsset.bulkCreate(uploaded)
     }
 
     const proj = await Project.findByPk(req.params.project_id, {
@@ -90,8 +79,34 @@ const UpdateProject = async (req, res) => {
   }
 }
 
+const UploadProject = async (req, res) => {
+  try {
+    const project = await Project.create({ ...req.body })
+    const files = typeof req.files === 'string' ? [req.files] : req.files
+    if (files.length) {
+      const uploaded = await uploadBulk(files, project.dataValues.id)
+      const assets = await ProjectAsset.bulkCreate(uploaded)
+      return res.send({ project, assets })
+    }
+    res.send(project)
+  } catch (error) {
+    throw error
+  }
+}
+
+const DeleteProject = async (req, res) => {
+  try {
+    await Project.destroy({ where: { id: req.params.project_id } })
+    res.send({ payload: req.params.project_id })
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
   GetProjects,
   ViewProject,
-  UpdateProject
+  UpdateProject,
+  UploadProject,
+  DeleteProject
 }
