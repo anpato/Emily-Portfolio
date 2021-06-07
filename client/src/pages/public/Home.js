@@ -7,7 +7,7 @@ const Home = ({ handleScroll }) => {
       <div className="cover">
         <div className="banner-logo">
           <img
-            src="https://d2zapy0kvendcq.cloudfront.net/assets/logo.png"
+            src="https://d2okcu8v62pl37.cloudfront.net/resources/assets/logo.png"
             alt=""
           />
           <Button

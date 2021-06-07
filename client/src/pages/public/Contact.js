@@ -15,6 +15,7 @@ const Contact = React.forwardRef(({ contact, setForm }, ref) => {
       <Divider />
       <form>
         <Input
+          disabled
           placeholder="Your Name"
           value={contact.name}
           name="name"
@@ -24,6 +25,7 @@ const Contact = React.forwardRef(({ contact, setForm }, ref) => {
           onChange={(v, e) => handleChange(v, e)}
         />
         <Input
+          disabled
           placeholder="Your Email"
           value={contact.email}
           name="email"
@@ -32,6 +34,7 @@ const Contact = React.forwardRef(({ contact, setForm }, ref) => {
           onChange={(v, e) => handleChange(v, e)}
         />
         <Input
+          disabled
           componentClass="textarea"
           placeholder="Let's design something together! Feel free to contact me and I will
           reply back as soon as possible!"
@@ -45,7 +48,7 @@ const Contact = React.forwardRef(({ contact, setForm }, ref) => {
           disabled={!contact.name || !contact.email || !contact.message}
           appearance="primary"
         >
-          Send
+          Coming Soon
         </Button>
       </form>
     </section>

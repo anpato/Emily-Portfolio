@@ -6,7 +6,8 @@ import {
   ContactReducer,
   UIReducer,
   UploadReducer,
-  AdminProjectReducer
+  AdminProjectReducer,
+  AuthReducer
 } from './reducers'
 
 export default createStore(
@@ -15,7 +16,8 @@ export default createStore(
     contact: ContactReducer,
     ui: UIReducer,
     upload: UploadReducer,
-    adminProjects: AdminProjectReducer
+    adminProjects: AdminProjectReducer,
+    auth: AuthReducer
   }),
   process.env.NODE_ENV === 'production'
     ? applyMiddleware(thunk)

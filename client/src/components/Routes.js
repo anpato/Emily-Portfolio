@@ -1,31 +1,26 @@
-import { Content, Loader } from 'rsuite'
+import { Content } from 'rsuite'
 import { Route, Switch } from 'react-router-dom'
 import Public from '../pages/Public'
 import ProtectedRoute from './ProtectedRoute'
 import Private from '../pages/Private'
-import { useQuery } from 'react-query'
 import ProjectForm from '../pages/private/ProjectForm'
 import ViewProject from '../pages/private/ViewProject'
 import ProjectManagement from '../pages/private/ProjectManagement'
 import UpdateForm from '../pages/private/UpdateForm'
+import Login from '../pages/Login'
 
-const Routes = () => {
-  const token = localStorage.getItem('token')
-  const { isLoading } = useQuery('fetch-admin', async () => {})
-  if (isLoading) {
-    return <Loader backdrop size="lg" center />
-  }
+const Routes = ({ currentUser, authenticated }) => {
   return (
     <Content>
       <div style={{ maxWidth: '100%' }}>
         <Switch>
-          <Route exact path="/" component={Public} />
-          <Route path="/login" />
+          <Route exact path="/" component={() => <Public />} />
+          <Route path="/login" component={Login} />
           <ProtectedRoute
             exact
+            currentUser={currentUser}
+            isAuthenticated={authenticated}
             path="/dashboard"
-            token={1}
-            user={1}
             component={() => (
               <Private>
                 <ProjectManagement />
@@ -34,9 +29,9 @@ const Routes = () => {
           />
           <ProtectedRoute
             exact
+            currentUser={currentUser}
+            isAuthenticated={authenticated}
             path="/dashboard/project/new"
-            token={1}
-            user={1}
             render={() => (
               <Private>
                 <ProjectForm />
@@ -46,8 +41,8 @@ const Routes = () => {
           <ProtectedRoute
             exact
             path="/dashboard/project/view/:project_id"
-            token={1}
-            user={1}
+            currentUser={currentUser}
+            isAuthenticated={authenticated}
             component={() => (
               <Private>
                 <ViewProject />
@@ -57,8 +52,8 @@ const Routes = () => {
           <ProtectedRoute
             exact
             path="/dashboard/update/:project_id"
-            token={1}
-            user={1}
+            currentUser={currentUser}
+            isAuthenticated={authenticated}
             component={() => (
               <Private>
                 <UpdateForm />

@@ -25,7 +25,12 @@ const videoExts = [
 ]
 
 const genMetatype = (file) => {
-  return imgExts.includes(path.extname(file)) ? 'image' : 'video'
+  if (videoExts.includes(path.extname(file))) {
+    return 'video'
+  }
+  if (imgExts.includes(path.extname(file))) {
+    return 'image'
+  }
 }
 
 const uploadBulk = async (files, projectId) => {
@@ -43,7 +48,13 @@ const uploadBulk = async (files, projectId) => {
   }))
 }
 
+const controllerBuilder = (methods, router) => {
+  methods.forEach((m) => router[m.method](m.path, m.middleware || [], m.fn))
+  return router
+}
+
 module.exports = {
   genMetatype,
-  uploadBulk
+  uploadBulk,
+  controllerBuilder
 }

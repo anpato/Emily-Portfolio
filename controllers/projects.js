@@ -6,6 +6,7 @@ const {
   DeleteProject
 } = require('../queries/projects')
 const multer = require('multer')
+const { controllerBuilder } = require('../utils')
 const router = require('express').Router()
 const upload = multer({ storage: multer.memoryStorage() })
 const methods = [
@@ -26,9 +27,7 @@ const methods = [
   { method: 'delete', path: '/:project_id', fn: DeleteProject }
 ]
 
-methods.forEach((m) => router[m.method](m.path, m.middleware || [], m.fn))
-
 module.exports = {
   path: '/projects',
-  router
+  router: controllerBuilder(methods, router)
 }

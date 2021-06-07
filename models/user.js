@@ -1,5 +1,6 @@
 'use strict'
 const { Model } = require('sequelize')
+const { genPassword } = require('../middleware')
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -40,7 +41,13 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: 'User',
-      tableName: 'users'
+      tableName: 'users',
+      hooks: {
+        beforeCreate: async (instance) => {
+          instance.passwordDigest = await genPassword(instance.passwordDigest)
+          return instance
+        }
+      }
     }
   )
   return User

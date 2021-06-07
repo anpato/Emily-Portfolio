@@ -6,7 +6,7 @@ import {
   SetProjects,
   TargetDisplayItem
 } from '../../store/actions'
-import { Loader } from 'rsuite'
+import { Header, Loader } from 'rsuite'
 import { Container, Grid } from 'semantic-ui-react'
 import React, { Suspense } from 'react'
 import PanelPlaceholder from '../../components/PanelPlaceholder'
@@ -48,6 +48,11 @@ const Projects = React.forwardRef(
     return (
       <Container fluid style={{ padding: '1em', marginTop: '1em' }}>
         <div ref={ref}>
+          {!projects.length && (
+            <h3 style={{ textAlign: 'center' }}>
+              Check back soon for new projects!
+            </h3>
+          )}
           <Suspense fallback={<PanelPlaceholder />}>
             <Grid columns={3} padded relaxed stackable>
               <ProjectSegment

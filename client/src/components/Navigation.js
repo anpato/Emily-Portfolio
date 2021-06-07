@@ -1,7 +1,12 @@
 import { useHistory, useLocation } from 'react-router-dom'
-import { Badge, Header, Icon, Nav, Navbar } from 'rsuite'
+import { Badge, Header, Icon, Nav, Navbar, Tooltip, Whisper } from 'rsuite'
 
-const Navigation = ({ handleScroll, toggleDrawer, notifications }) => {
+const Navigation = ({
+  handleScroll,
+  toggleDrawer,
+  notifications,
+  authenticated
+}) => {
   const history = useHistory()
   const location = useLocation()
   const navLinks = [
@@ -38,9 +43,14 @@ const Navigation = ({ handleScroll, toggleDrawer, notifications }) => {
     }
   ]
 
+  const signOut = () => {
+    localStorage.clear()
+    history.push('/')
+  }
+
   const publicOptions = (
     <Header style={{ width: '100%', zIndex: 1000 }}>
-      <Navbar appearance="default">
+      <Navbar appearance="inverse">
         <Navbar.Header>
           <img
             src="https://d2okcu8v62pl37.cloudfront.net/resources/assets/logo-light.png"
@@ -102,12 +112,17 @@ const Navigation = ({ handleScroll, toggleDrawer, notifications }) => {
               <Icon icon="bell" />
             )}
           </Nav.Item>
+          <Nav.Item className="nav-link" onSelect={signOut}>
+            <Whisper placement="auto" speaker={<Tooltip>Sign Out</Tooltip>}>
+              <Icon icon="sign-out" />
+            </Whisper>
+          </Nav.Item>
         </Nav>
       </Navbar.Body>
     </Navbar>
   )
 
-  return privateOptions
+  return authenticated ? privateOptions : publicOptions
 }
 
 export default Navigation

@@ -1,6 +1,8 @@
+import { Panel } from 'rsuite'
+
 const Policy = () => {
   return (
-    <div>
+    <Panel>
       <h1>Privacy Policy</h1>
       <p>Last updated: June 01, 2021</p>
       <p>
@@ -503,7 +505,7 @@ const Policy = () => {
           </a>
         </li>
       </ul>
-    </div>
+    </Panel>
   )
 }
 

@@ -1,7 +1,9 @@
+import { useHistory } from 'react-router-dom'
 import { Icon, Footer as FooterContent } from 'rsuite'
 import { Grid } from 'semantic-ui-react'
 
 const Footer = ({ toggleModal }) => {
+  const history = useHistory()
   return (
     <FooterContent>
       <Grid columns={3} padded relaxed stackable>
@@ -27,16 +29,20 @@ const Footer = ({ toggleModal }) => {
               <div>
                 <Icon icon="linkedin-square" size="2x" />
               </div>
-              <div>Linked In</div>
+              <div>LinkedIn</div>
             </a>
           </div>
         </Grid.Column>
         <Grid.Column textAlign="center" verticalAlign="bottom">
-          <p>Copyright &copy; 2020 Emily Peres</p>
+          <p onClick={() => history.push('/login')}>
+            Copyright &copy; 2020 Emily Peres
+          </p>
         </Grid.Column>
         <Grid.Column textAlign="right">
           <div className="policy-links">
-            <a onClick={() => toggleModal(true)}>Privacy Policy</a>
+            <a href="#policy" onClick={() => toggleModal(true)}>
+              Privacy Policy
+            </a>
           </div>
         </Grid.Column>
       </Grid>
