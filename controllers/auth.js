@@ -17,7 +17,8 @@ const methods = [
     path: '/session',
     middleware: [readToken, verifyToken],
     fn: CheckSession
-  }
+  },
+  regOpts
 ]
 
 module.exports = {
