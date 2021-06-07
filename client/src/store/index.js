@@ -9,6 +9,8 @@ import {
   AdminProjectReducer,
   AuthReducer
 } from './reducers'
+import LogRocket from 'logrocket'
+LogRocket.init(process.env.REACT_APP_LOG_ROCKET)
 
 export default createStore(
   combineReducers({
@@ -20,6 +22,6 @@ export default createStore(
     auth: AuthReducer
   }),
   process.env.NODE_ENV === 'production'
-    ? applyMiddleware(thunk)
+    ? applyMiddleware(thunk, LogRocket.reduxMiddleware())
     : composeWithDevTools(applyMiddleware(thunk))
 )
