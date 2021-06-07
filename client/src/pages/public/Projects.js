@@ -6,7 +6,7 @@ import {
   SetProjects,
   TargetDisplayItem
 } from '../../store/actions'
-import { Header, Loader } from 'rsuite'
+import { Loader } from 'rsuite'
 import { Container, Grid } from 'semantic-ui-react'
 import React, { Suspense } from 'react'
 import PanelPlaceholder from '../../components/PanelPlaceholder'
