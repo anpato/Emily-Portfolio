@@ -1,8 +1,7 @@
 'use strict'
 const { Model } = require('sequelize')
-const { genPassword } = require('../middleware')
 module.exports = (sequelize, DataTypes) => {
-  class User extends Model {
+  class Message extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -10,10 +9,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      User.hasMany(models.Message, { foreignKey: 'user_id' })
+      Message.belongsTo(models.User, { foreignKey: 'user_id' })
     }
   }
-  User.init(
+  Message.init(
     {
       id: {
         type: DataTypes.UUID,
@@ -21,35 +20,42 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         defaultValue: DataTypes.UUIDV4
       },
-      name: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-      email: {
+      senderEmail: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
+        field: 'sender_email',
         validate: {
           isEmail: true
         }
       },
-      passwordDigest: {
+      message: {
+        type: DataTypes.TEXT,
+        allowNull: false
+      },
+      unread: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: true
+      },
+      senderName: {
         type: DataTypes.STRING,
         allowNull: false,
-        field: 'password_digest'
+        field: 'sender_name'
+      },
+      userId: {
+        type: DataTypes.UUID,
+        field: 'user_id',
+        references: {
+          model: 'users',
+          key: 'id'
+        }
       }
     },
     {
       sequelize,
-      modelName: 'User',
-      tableName: 'users',
-      hooks: {
-        beforeCreate: async (instance) => {
-          instance.passwordDigest = await genPassword(instance.passwordDigest)
-          return instance
-        }
-      }
+      modelName: 'Message',
+      tableName: 'messages'
     }
   )
-  return User
+  return Message
 }
