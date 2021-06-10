@@ -38,8 +38,8 @@ const Navigation = ({
     {
       path: '/messages',
       text: 'Messages',
-      disabled: true,
-      onSelect: () => {}
+      disabled: false,
+      onSelect: () => history.push('/dashboard/messages')
     }
   ]
 

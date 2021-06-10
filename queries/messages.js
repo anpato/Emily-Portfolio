@@ -23,6 +23,7 @@ const GetMessages = async (req, res) => {
     })
     res.send({
       messages: messages.rows,
+      totalMessages: messages.count,
       totalPages: Math.floor(messages.count / parseInt(limit))
     })
   } catch (error) {
@@ -37,6 +38,12 @@ const ViewMessage = async (req, res) => {
   } catch (error) {
     throw error
   }
+}
+
+const ReplyMessage = async (req, res) => {
+  try {
+    // TODO Find Way to reply in app vs email
+  } catch (error) {}
 }
 
 const MarkMessage = async (req, res) => {

@@ -8,6 +8,7 @@ import ViewProject from '../pages/private/ViewProject'
 import ProjectManagement from '../pages/private/ProjectManagement'
 import UpdateForm from '../pages/private/UpdateForm'
 import Login from '../pages/Login'
+import Messages from '../pages/private/Messages'
 
 const Routes = ({ currentUser, authenticated }) => {
   return (
@@ -57,6 +58,17 @@ const Routes = ({ currentUser, authenticated }) => {
             component={() => (
               <Private>
                 <UpdateForm />
+              </Private>
+            )}
+          />
+          <ProtectedRoute
+            exact
+            path="/dashboard/messages"
+            currentUser={currentUser}
+            isAuthenticated={authenticated}
+            component={() => (
+              <Private>
+                <Messages />
               </Private>
             )}
           />

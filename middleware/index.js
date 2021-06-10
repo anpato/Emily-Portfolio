@@ -30,7 +30,6 @@ const readToken = (req, res, next) => {
     res.locals.token = token
     next()
   } catch (error) {
-    console.log(error)
     res.status(403).json({ msg: 'Forbidden' })
   }
 }
